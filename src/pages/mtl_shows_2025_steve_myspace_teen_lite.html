@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SteveSpace 2.0 — MY ✦ LIFE ✦ MY ✦ TUNES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comic+Neue:wght@300;700&display=swap" rel="stylesheet">
+<style>
+/* ===== 2000s teen MySpace chaos ===== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin:0;
+  font-family: "Comic Neue","Comic Sans MS", cursive, system-ui, sans-serif;
+  background:
+    url('https://www.transparenttextures.com/patterns/stardust.png'),
+    radial-gradient(circle at 10% 10%, rgba(255,0,150,.30), transparent 40%),
+    radial-gradient(circle at 90% 20%, rgba(0,200,255,.25), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,0,.20), transparent 40%),
+    linear-gradient(135deg, #26004d, #290066 35%, #004a7a 70%, #1a8f00 100%);
+  background-attachment: fixed, fixed, fixed, fixed, fixed;
+  color:#fff;
+  cursor: url('https://cur.cursors-4u.net/others/oth-7/oth639.cur'), auto;
+}
+a { color:#00ffea; text-decoration:none; }
+a:hover { text-shadow:0 0 8px #00fff2, 0 0 18px #00fff2; }
+
+header.top {
+  position: sticky; top:0; z-index: 9;
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+  background-size: 300% 100%;
+  animation: rainbow 7s linear infinite;
+  border-bottom: 4px double rgba(255,255,255,.6);
+}
+@keyframes rainbow { to { background-position: 300% 0; } }
+header .title { padding: 12px 14px; font-family: "Press Start 2P", monospace; font-size: 15px; color:#1a0033; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 12px; }
+.grid { display:grid; grid-template-columns: 280px 1fr; gap:14px; }
+
+.card {
+  background: rgba(0,0,0,.36);
+  border: 2px solid rgba(255,255,255,.25);
+  border-radius: 16px;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 22px rgba(255,0,255,.2), inset 0 0 28px rgba(0,255,255,.05);
+}
+.card .inner { padding: 14px; }
+
+.marquee { display:block; white-space:nowrap; overflow:hidden; animation: marquee 18s linear infinite; }
+@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+.blink { animation: blink .85s step-end infinite; }
+@keyframes blink { 50% { opacity:.25; } }
+.rainbow-text {
+  background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+  -webkit-background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,.6));
+}
+
+.top8 { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; }
+.top8 .friend { text-align:center; font-size:12px; }
+.top8 img { width:100%; aspect-ratio:1/1; object-fit:cover; border:3px groove #00fff2; border-radius:10px; transition: transform .2s; }
+.top8 img:hover { transform: rotate(-2deg) scale(1.04); }
+
+#main h1 { color:#ffe600; text-shadow: 2px 2px 0 #ff00e6, 4px 4px 0 #00fff2; font-family: Impact, "Arial Black", sans-serif; }
+#main h2 { color:#00fff2; text-shadow: 1px 1px 0 #ff00e6; }
+#main table { width:100%; border-collapse:separate; border-spacing:0; font-size:14px; }
+#main th, #main td { border:1px solid rgba(255,255,255,.3); padding:.55rem .6rem; }
+#main th { background: linear-gradient(90deg, rgba(255,0,230,.35), rgba(0,255,242,.35)); }
+#main tr:nth-child(even) td { background: rgba(255,255,255,.06); }
+#main tr:hover td { background: rgba(255,255,255,.15); }
+
+/* ===== Character card (user face) ===== */
+.character { position: relative; text-align:center; }
+.sticker {
+  display:inline-block;
+  padding:10px;
+  border-radius: 18px;
+  background: conic-gradient(from 0deg, #ff00e6, #00ffe5, #ffe600, #ff00e6);
+  box-shadow: 0 12px 24px rgba(0,0,0,.35);
+  transform: rotate(-2deg);
+}
+.sticker img { 
+  display:block; width: 220px; height: 220px; object-fit: cover;
+  border-radius: 50%; border: 6px double #fff;
+  filter: saturate(120%) contrast(110%) drop-shadow(0 6px 16px rgba(0,0,0,.45));
+}
+.tag { margin-top:6px; font-weight: 800; font-size: 14px; letter-spacing:.5px; }
+.stats { margin-top:8px; text-align:left; font-size:12px; }
+.statbar { background: rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.4); height:10px; border-radius: 999px; overflow:hidden; }
+.statbar > span { display:block; height:100%; background: linear-gradient(90deg, #39ff14, #00ffe5); }
+
+.polaroids { display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; }
+.polaroids .p { background:#fff; color:#000; padding:6px; border-radius:6px; transform: rotate(var(--r, -3deg)); box-shadow: 0 8px 20px rgba(0,0,0,.35); }
+.polaroids img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+
+/* Cursor sparkles */
+.sparkle {
+  position: fixed; pointer-events:none; z-index: 9999; font-size: 14px; opacity: 1;
+  animation: floatout 1000ms ease-out forwards;
+  filter: drop-shadow(0 0 6px #fff);
+}
+@keyframes floatout { to { transform: translateY(-40px) rotate(20deg); opacity: 0; } }
+
+footer { text-align:center; padding: 26px 10px; font-size:12px; color:#ddd; }
+.counter { font-family: "Press Start 2P", monospace; font-size: 12px; background:#000; padding: 6px 8px; border:2px inset #39ff14; display:inline-block; }
+
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="title">STEVE'S ✦ ✦ ✦ ULTRA MYSPACE ✦ ✦ ✦ <span class="rainbow-text">ADD • MSG • COMMENT • <span class="blink">SUBSCRIBE</span></span>
+    <span style="float:right" class="counter">VISITS: <span id="visitCounter">000001</span></span>
+  </div>
+</header>
+
+<div class="container">
+  <span class="marquee">🎧 Now Playing: AFI • Taking Back Sunday • Evanescence • Underoath • Sum 41 • Blink‑182 • My Chemical Romance • Atreyu • The Used • Paramore • Panic! At The Disco 🎧</span>
+  <div class="grid">
+    <aside class="card">
+      <div class="inner character">
+        <div class="sticker">
+          <img src="steve_face_small.jpg" alt="Steve — Character">
+          <div class="tag">STEVE // LVL 42 CODE BARD</div>
+          <div class="stats">
+            <div>Charisma</div>
+            <div class="statbar"><span style="width:78%"></span></div>
+            <div>Focus</div>
+            <div class="statbar"><span style="width:65%"></span></div>
+            <div>Riff Power</div>
+            <div class="statbar"><span style="width:92%"></span></div>
+          </div>
+        </div>
+        <p style="margin-top:10px;">Mood: <span class="blink">Hypercolor</span> • Status: <b>Online</b></p>
+        <hr>
+        <h3>Top 8 (obviously)</h3>
+        <div class="top8">
+          <div class="friend"><a href="#"><img src="https://picsum.photos/seed/friend0/220/220" alt="Friend 1"></a><div>Friend 1</div></div><div class="friend"><a href="#"><img src="https://picsum.photos/seed/friend1/220/220" alt="Friend 2"></a><div>Friend 2</div></div><div class="friend"><a href="#"><img src="https://picsum.photos/seed/friend2/220/220" alt="Friend 3"></a><div>Friend 3</div></div><div class="friend"><a href="#"><img src="https://picsum.photos/seed/friend3/220/220" alt="Friend 4"></a><div>Friend 4</div></div><div class="friend"><a href="#"><img src="https://picsum.photos/seed/friend4/220/220" alt="Friend 5"></a><div>Friend 5</div></div><div class="friend"><a href="#"><img src="https://picsum.photos/seed/friend5/220/220" alt="Friend 6"></a><div>Friend 6</div></div><div class="friend"><a href="#"><img src="https://picsum.photos/seed/friend6/220/220" alt="Friend 7"></a><div>Friend 7</div></div><div class="friend"><a href="#"><img src="https://picsum.photos/seed/friend7/220/220" alt="Friend 8"></a><div>Friend 8</div></div>
+        </div>
+      </div>
+    </aside>
+
+    <main id="main" class="card">
+      <div class="inner">
+        <h1 class="rainbow-text">Prochains Shows • Montréal</h1>
+        <!-- Original content from your page -->
+        <!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prochains concerts — Montréal & Laval (automne 2025)</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5;margin:2rem;max-width:980px}
+h1,h2,h3{line-height:1.2}
+table{border-collapse:collapse;width:100%;}
+th,td{border:1px solid #ddd;padding:.5rem;vertical-align:top}
+th{background:#fafafa;text-align:left}
+code,pre{background:#f6f8fa;padding:.25rem .4rem;border-radius:4px}
+a{color:#0b5fff;text-decoration:none}a:hover{text-decoration:underline}
+.small{color:#555;font-size:.95rem}
+</style>
+<h1>Prochains concerts (filtrés pour tes goûts) — Montréal &amp; Laval, automne 2025</h1>
+<div class="small">Mise à jour: 2025-08-08</div>
+<h2>Article</h2>
+<p>Montréal, fin d’été — l’air sent la pluie, le métro, et l’électricité.</p>
+<p>Pas de « contenu », pas de poudre aux yeux. Juste des guitares qui cognent, des voix qui fendent l’air, et des salles où le plancher garde mémoire de milliers de pas. Cet automne, la région de Montréal devient un corridor de tension et de beauté — du grondement cathédral de <strong>Swans</strong> à la dentelle métallique de <strong>Deftones</strong>, des drones minéraux de <strong>Boris</strong> aux uppercuts hardcore de <strong>Madball</strong> et <strong>Comeback Kid</strong>.</p>
+<p>On garde ça <strong>Québec‑forward</strong> quand c’est possible, on évite le plastique, on célèbre la patine : punk de première vague (<strong>The Damned</strong>), deathcore millimétré (<strong>Lorna Shore</strong>), métal moderniste (<strong>Architects</strong>), songwriter sans sucre (<strong>Sharon Van Etten</strong> au National). C’est la saison des amplis qui tiennent tête à la climatisation et des refrains qui collent aux briques.</p>
+<p><em>Bref : si tu veux des frissons construits à la main, c’est ici.</em></p>
+<h2>Calendrier (ordre chronologique)</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>date</th>
+      <th>band(s)</th>
+      <th>venue</th>
+      <th>style</th>
+      <th>ai review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Aug 15, 2025</td>
+      <td>Architects + ERRA + Holywatr</td>
+      <td>Place Bell (Laval)</td>
+      <td>Modern metalcore</td>
+      <td>Precision + catharsis; riffs built for cathode rays.</td>
+    </tr>
+    <tr>
+      <td>Aug 27, 2025</td>
+      <td>Thousand Below + Aviana + True North + Dreamwake</td>
+      <td>Théâtre Fairmount</td>
+      <td>Post‑hardcore/metalcore</td>
+      <td>Angsty shimmer with hooks—sad kids, loud hearts.</td>
+    </tr>
+    <tr>
+      <td>Aug 30, 2025</td>
+      <td>Descendents + Buzzcocks + MattstaGraham</td>
+      <td>MTELUS</td>
+      <td>Classic punk</td>
+      <td>Eternal caffeine; melody at 200 bpm.</td>
+    </tr>
+    <tr>
+      <td>Sep 07, 2025</td>
+      <td>Comeback Kid + Incendiary + Prowl + Punitive Damage</td>
+      <td>Club Soda</td>
+      <td>Hardcore</td>
+      <td>Circle‑pit therapy. No algorithms, just sweat.</td>
+    </tr>
+    <tr>
+      <td>Sep 08, 2025</td>
+      <td>Deftones + IDLES + The Barbarians of California</td>
+      <td>Bell Centre</td>
+      <td>Alt‑metal / art‑punk</td>
+      <td>Dreamy crush; shoegaze teeth.</td>
+    </tr>
+    <tr>
+      <td>Sep 11, 2025</td>
+      <td>Falling In Reverse + Slaughter To Prevail + Hollywood Undead + Point North</td>
+      <td>Bell Centre</td>
+      <td>Metalcore/alt‑metal</td>
+      <td>More bombast than subtlety—bring earplugs.</td>
+    </tr>
+    <tr>
+      <td>Sep 18, 2025</td>
+      <td>Halestorm &amp; Lindsey Stirling + Apocalyptica</td>
+      <td>Place Bell (Laval)</td>
+      <td>Hard rock / symphonic</td>
+      <td>Violins meet valve amps; surprisingly grand.</td>
+    </tr>
+    <tr>
+      <td>Sep 24, 2025</td>
+      <td>The Damned + The Bellrays</td>
+      <td>Théâtre Beanfield</td>
+      <td>First‑wave punk / garage soul</td>
+      <td>Snarling history lesson; still vital.</td>
+    </tr>
+    <tr>
+      <td>Sep 26, 2025</td>
+      <td>Teenage Bottlerocket + We Were Sharks + Speed Massacre</td>
+      <td>Foufounes Électriques</td>
+      <td>Punk rock</td>
+      <td>Candy‑coated velocity; grins guaranteed.</td>
+    </tr>
+    <tr>
+      <td>Oct 02, 2025</td>
+      <td>Signs of the Swarm + Mental Cruelty + Ten56 + Carcosa</td>
+      <td>Théâtre Fairmount</td>
+      <td>Deathcore</td>
+      <td>Jet‑black breakdowns; uncompromising heft.</td>
+    </tr>
+    <tr>
+      <td>Oct 04, 2025</td>
+      <td>Swans + Little Annie &amp; Paul Wallfisch</td>
+      <td>Le National</td>
+      <td>Experimental/noise rock</td>
+      <td>Cathedral‑scale drones; time dilates.</td>
+    </tr>
+    <tr>
+      <td>Oct 08, 2025</td>
+      <td>Madball + Strife + Integrity + Combust</td>
+      <td>Théâtre Fairmount</td>
+      <td>Hardcore legends</td>
+      <td>Old‑school grit; pit etiquette required.</td>
+    </tr>
+    <tr>
+      <td>Oct 09, 2025</td>
+      <td>Psychostick + Danimal Cannon</td>
+      <td>Théâtre Fairmount</td>
+      <td>Comedy metal / chiptune</td>
+      <td>Goofy, loud, cathartic—dessert, not dinner.</td>
+    </tr>
+    <tr>
+      <td>Oct 28, 2025</td>
+      <td>Lorna Shore + The Black Dahlia Murder + Shadow of Intent + PeelingFlesh</td>
+      <td>Place Bell (Laval)</td>
+      <td>Symphonic deathcore</td>
+      <td>Orchestral hellfire; immaculate extremity.</td>
+    </tr>
+    <tr>
+      <td>Nov 06, 2025</td>
+      <td>Boris</td>
+      <td>Le National</td>
+      <td>Drone/doom/experimental</td>
+      <td>Monolithic tone sculpture; bring patience.</td>
+    </tr>
+    <tr>
+      <td>Nov 19, 2025</td>
+      <td>Fit For A King + Make Them Suffer + 156/Silence</td>
+      <td>L’Olympia</td>
+      <td>Metalcore</td>
+      <td>Clean/harsh tension done right.</td>
+    </tr>
+    <tr>
+      <td>Nov 26, 2025</td>
+      <td>Like Moths to Flames + Kingdom of Giants + Acres + Heavensgate</td>
+      <td>Théâtre Fairmount</td>
+      <td>Metalcore</td>
+      <td>Hooks with bite; efficient devastation.</td>
+    </tr>
+    <tr>
+      <td>Dec 05, 2025</td>
+      <td>Cattle Decapitation + Aborted + Frozen Soul + Tribal Gaze + Grindmother</td>
+      <td>Club Soda</td>
+      <td>Deathgrind/death metal</td>
+      <td>Apocalyptic precision; blast‑beat ballet.</td>
+    </tr>
+    <tr>
+      <td>Dec 06, 2025</td>
+      <td>Despised Icon</td>
+      <td>Club Soda</td>
+      <td>Deathcore (Montréal OGs)</td>
+      <td>Home‑field brutality; hometown roar.</td>
+    </tr>
+  </tbody>
+</table>
+</html>
+
+        <!-- End original content -->
+        <hr>
+        <h2>Random Gallery (trees, cars, other teenage obsessions)</h2>
+        <div class="polaroids">
+          <div class="p" style="--r:-4deg">
+            <img src="https://picsum.photos/seed/trees/500/380" alt="Trees">
+            <div style="padding-top:4px; font-weight:700;">aesthetic trees 🌲</div>
+          </div>
+          <div class="p" style="--r:2deg">
+            <img src="https://picsum.photos/seed/cars/500/380" alt="Car">
+            <div style="padding-top:4px; font-weight:700;">fast car 🚗💨</div>
+          </div>
+          <div class="p" style="--r:-6deg">
+            <img src="https://picsum.photos/seed/city/500/380" alt="City">
+            <div style="padding-top:4px; font-weight:700;">city nights 🌃</div>
+          </div>
+          <div class="p" style="--r:5deg">
+            <img src="https://picsum.photos/seed/catzz/500/380" alt="Cat">
+            <div style="padding-top:4px; font-weight:700;">random cat 😼</div>
+          </div>
+          <div class="p" style="--r:-7deg">
+            <img src="https://picsum.photos/seed/skate/500/380" alt="Skate">
+            <div style="padding-top:4px; font-weight:700;">skate 4ever 🛹</div>
+          </div>
+          <div class="p" style="--r:3deg">
+            <img src="https://picsum.photos/seed/flowers/500/380" alt="Flowers">
+            <div style="padding-top:4px; font-weight:700;">flowers 🎴</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer>© 2003–2025 SteveSpace // Built with gradients, glitter, and questionable CSS choices.</footer>
+
+<script>
+// Cursor sparkles
+const glyphs = ["✦","✶","★","✺","✹","❇","✸","✧"];
+let lastX=0, lastY=0;
+window.addEventListener('mousemove', (e) => {
+  if (Math.hypot(e.clientX-lastX, e.clientY-lastY) < 8) return;
+  lastX=e.clientX; lastY=e.clientY;
+  const s = document.createElement('div');
+  s.className = 'sparkle';
+  s.textContent = glyphs[Math.floor(Math.random()*glyphs.length)];
+  s.style.left = (e.clientX + (Math.random()*12-6)) + 'px';
+  s.style.top  = (e.clientY + (Math.random()*12-6)) + 'px';
+  s.style.transform = 'translateY(0) rotate(' + (Math.random()*60-30) + 'deg)';
+  s.style.fontSize = (12 + Math.random()*14) + 'px';
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 1100);
+});
+
+// Fake visit counter (localStorage)
+const key = 'stevespace_visits_v2';
+const n = (parseInt(localStorage.getItem(key)||'0',10) + 1);
+localStorage.setItem(key, n);
+document.getElementById('visitCounter').textContent = String(n).padStart(6,'0');
+</script>
+</body>
+</html>
