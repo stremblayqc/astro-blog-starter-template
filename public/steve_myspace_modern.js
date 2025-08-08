@@ -3,7 +3,6 @@
   const $ = (q, root=document) => root.querySelector(q);
   const $$ = (q, root=document) => Array.from(root.querySelectorAll(q));
 
-  // ===== LocalStorage helpers =====
   const store = {
     get(key, fallback) {
       try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch { return fallback; }
@@ -13,7 +12,6 @@
     }
   };
 
-  // ===== Theme toggle (90s mode) =====
   const themeBtn = $("#themeBtn");
   const pref = store.get("steve_theme90s", false);
   if (pref) document.body.classList.add("mode-90s");
@@ -22,13 +20,11 @@
     store.set("steve_theme90s", document.body.classList.contains("mode-90s"));
   });
 
-  // ===== Visit counter =====
   const visitKey = "stevespace_visits_live";
   const visits = (parseInt(localStorage.getItem(visitKey) || "0", 10) + 1);
   localStorage.setItem(visitKey, visits);
   $("#visitCounter").textContent = String(visits).padStart(6, "0");
 
-  // ===== Animate stat bars =====
   $$(".statbar > span").forEach((el) => {
     const t = parseFloat(el.dataset.target || "0.5");
     requestAnimationFrame(() => {
@@ -37,7 +33,6 @@
     });
   });
 
-  // ===== Top 8 friends (shufflable, starring) =====
   const top8 = $("#top8");
   const friendSeeds = store.get("steve_top8", null) || Array.from({length: 8}, (_,i) => `friend-${i}-${Math.random().toString(36).slice(2,7)}`);
   store.set("steve_top8", friendSeeds);
@@ -53,7 +48,6 @@
       star.style.cursor = "pointer";
       star.addEventListener("click", (e) => {
         e.stopPropagation();
-        // Promote to index 0
         const i = list.indexOf(seed);
         list.unshift(list.splice(i,1)[0]);
         store.set("steve_top8", list);
@@ -61,7 +55,6 @@
         pop("⭐");
       });
 
-      // Drag & drop
       card.addEventListener("dragstart", (e) => {
         card.classList.add("dragging");
         e.dataTransfer.setData("text/plain", seed);
@@ -91,7 +84,6 @@
     pop("🔀");
   });
 
-  // ===== Audio player (tiny playlist) =====
   const playlist = [
     { title: "Sum 41 — In Too Deep (preview)", url: "https://cdn.pixabay.com/download/audio/2022/03/31/audio_02e0e44b2b.mp3?filename=blink-182-style-pop-punk-112199.mp3" },
     { title: "Indie Rock Loop", url: "https://cdn.pixabay.com/download/audio/2022/10/21/audio_0c83a5bb40.mp3?filename=indie-rock-123135.mp3" },
@@ -119,7 +111,6 @@
     npProgress.style.width = p + "%";
   });
   audio.addEventListener("ended", () => load(track+1));
-  // Keyboard: space = play/pause, arrows switch tracks
   window.addEventListener("keydown", (e) => {
     if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
     if (e.code === "Space") { e.preventDefault(); playBtn.click(); }
@@ -128,7 +119,6 @@
   });
   load(0);
 
-  // ===== Gallery (draggable polaroids) =====
   const gallery = $("#gallery");
   const seeds = store.get("steve_gallery", null) || [
     "trees", "cars", "catzz", "skate", "flowers", "city", "phone", "stars", "pizza"
@@ -151,7 +141,6 @@
         gallery.appendChild(card);
         makeDraggable(card);
       }
-      // Random-ish placement
       const x = Math.random() * (W - 240 - margin) + margin;
       const y = Math.random() * (H - 220 - margin) + margin;
       card.style.left = x + "px";
@@ -188,7 +177,6 @@
     pop("🔀");
   });
 
-  // ===== Konami code => confetti
   const konami = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","KeyB","KeyA"];
   const buffer = [];
   window.addEventListener("keydown", (e) => {
@@ -196,14 +184,13 @@
     if (konami.every((k,i) => buffer[i] === k)) confetti();
   });
 
-  // ===== Sparkle/confetti FX (canvas) =====
   const canvas = $("#fx"); const ctx = canvas.getContext("2d");
   let W=0,H=0; function size(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; } size(); addEventListener("resize", size);
   const parts = [];
   function addParticle(x,y,emoji) {
     parts.push({x,y, vx:(Math.random()*2-1)*2, vy: -Math.random()*2-1, a:1, r: (Math.random()*0.5+0.6), t:emoji});
   }
-  function pop(emoji="✦"){ // burst at random pos
+  function pop(emoji="✦"){
     const x = Math.random()*W, y = Math.random()*H*.7 + 30;
     for (let i=0;i<18;i++) addParticle(x,y,emoji);
   }
