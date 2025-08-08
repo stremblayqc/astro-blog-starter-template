@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SteveSpace Live — Interactive Chaos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #1b003a;
+      --bg2: #00324b;
+      --bg3: #00a39a;
+      --text: #ffffff;
+      --accent1: #ff00e6;
+      --accent2: #00ffe5;
+      --accent3: #ffe600;
+      --card: rgba(0,0,0,.35);
+      --border: rgba(255,255,255,.25);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,0,150,.28), transparent 40%),
+        radial-gradient(circle at 90% 20%, rgba(0,200,255,.22), transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(255,255,0,.18), transparent 40%),
+        linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 40%, var(--bg3) 100%);
+      background-attachment: fixed, fixed, fixed, fixed;
+    }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    header {
+      position: sticky; top:0; z-index: 10;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3), var(--accent1));
+      background-size: 300% 100%;
+      animation: headshift 8s linear infinite;
+      border-bottom: 4px double rgba(255,255,255,.55);
+    }
+    @keyframes headshift { to { background-position: 300% 0; } }
+    .hdr-inner {
+      max-width: 1200px; margin: 0 auto; padding: 10px 14px;
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px;
+    }
+    .brand {
+      font-family: "Press Start 2P", monospace; font-size: 15px; letter-spacing: .5px;
+      color:#1a0033; text-shadow: 0 0 2px #fff;
+    }
+    .controls { display:flex; flex-wrap: wrap; gap: 8px; }
+    .btn {
+      padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(0,0,0,.15);
+      background: rgba(255,255,255,.85); color:#111; font-weight:700; cursor: pointer;
+    }
+    .btn:active { transform: translateY(1px); }
+
+    /* Layout */
+    .container { max-width: 1200px; margin: 0 auto; padding: 14px; }
+    .grid { display:grid; grid-template-columns: 300px 1fr; gap: 16px; }
+
+    .card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      backdrop-filter: blur(3px);
+      box-shadow: 0 0 22px rgba(0,0,0,.25), inset 0 0 28px rgba(255,255,255,.04);
+    }
+    .inner { padding: 14px; }
+
+    /* Character card */
+    .character { text-align: center; }
+    .sticker {
+      display:inline-block; padding: 10px; border-radius: 18px;
+      background: conic-gradient(from 0deg, var(--accent1), var(--accent2), var(--accent3), var(--accent1));
+      transform: rotate(-2deg);
+      box-shadow: 0 12px 24px rgba(0,0,0,.35);
+    }
+    .sticker img {
+      display:block; width: 220px; height: 220px; object-fit: cover;
+      border-radius: 50%; border: 6px double #fff;
+      filter: saturate(115%) contrast(110%) drop-shadow(0 6px 16px rgba(0,0,0,.45));
+    }
+    .tag { margin-top: 6px; font-weight: 900; }
+    .stats { margin-top: 8px; text-align:left; font-size:12px; }
+    .statbar { background: rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.4); height: 10px; border-radius: 999px; overflow:hidden; }
+    .statbar > span { display:block; height:100%; background: linear-gradient(90deg, #39ff14, var(--accent2)); width: 0%; }
+
+    /* Now Playing */
+    .nowplaying { display:flex; align-items:center; gap:10px; }
+    .np-title { font-weight:800; font-size: 13px; }
+    .progress { flex:1; height: 8px; background: rgba(255,255,255,.2); border-radius: 999px; overflow:hidden; }
+    .progress > span { display:block; height:100%; width:0%; background: linear-gradient(90deg, var(--accent1), var(--accent2)); }
+
+    /* Top 8 */
+    .top8 { display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .friend { text-align:center; font-size:12px; user-select: none; }
+    .friend img { width:100%; aspect-ratio:1/1; object-fit:cover; border:3px groove var(--accent2); border-radius: 10px; }
+    .friend.dragging { opacity:.5; }
+
+    /* Gallery (draggable polaroids) */
+    .gallery { position: relative; min-height: 360px; }
+    .polaroid {
+      position: absolute; width: 220px; background:#fff; color:#000; padding:6px; border-radius:6px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.35);
+      cursor: grab; user-select:none;
+      transform: rotate(var(--rot, -3deg));
+      transition: box-shadow .2s;
+    }
+    .polaroid:active { cursor: grabbing; }
+    .polaroid img { width:100%; height: 160px; object-fit: cover; display:block; border-radius: 4px; }
+    .polaroid .cap { padding-top: 4px; font-weight: 800; }
+
+    /* Main content table tweaks */
+    #main table { width: 100%; border-collapse: separate; border-spacing:0; font-size: 14px; }
+    #main th, #main td { border:1px solid rgba(255,255,255,.3); padding:.55rem .6rem; }
+    #main th { background: linear-gradient(90deg, rgba(255,0,230,.35), rgba(0,255,242,.35)); }
+    #main tr:nth-child(even) td { background: rgba(255,255,255,.06); }
+    #main tr:hover td { background: rgba(255,255,255,.15); }
+
+    footer { text-align:center; padding: 26px 10px; font-size:12px; color:#ddd; }
+
+    /* Canvas layer for sparkles */
+    #fx { position: fixed; inset:0; z-index: 0; pointer-events:none; }
+
+    /* 90s mode */
+    body.mode-90s {
+      --bg1: #ffffff; --bg2:#ffffff; --bg3:#ffffff; --text:#000;
+      --card: #f8f8f8; --border:#d0d0d0; --accent1:#7b0099; --accent2:#0000cc; --accent3:#ffe600;
+      background: #fff;
+    }
+    body.mode-90s header {
+      background: #f2f2f2; border-bottom:1px solid #ccc; animation: none;
+    }
+    body.mode-90s .brand { color:#111; text-shadow:none; font-family: Arial, Helvetica, sans-serif; letter-spacing: 0; }
+    body.mode-90s .btn { background:#eaeaea; }
+  </style>
+</head>
+<body>
+  <canvas id="fx"></canvas>
+  <header>
+    <div class="hdr-inner">
+      <div class="brand">STEVE'S ULTRA MYSPACE — LIVE</div>
+      <div class="controls">
+        <button class="btn" id="themeBtn">Toggle 90s Mode</button>
+        <button class="btn" id="shuffleGalleryBtn">Shuffle Gallery</button>
+        <button class="btn" id="shuffleTopBtn">Shuffle Top 8</button>
+        <button class="btn" id="confettiBtn">Confetti</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+      <aside class="card">
+        <div class="inner character">
+          <div class="sticker">
+            <img id="avatar" src="steve_face_small.jpg" alt="Steve Avatar">
+            <div class="tag">STEVE // LVL 42 CODE BARD</div>
+            <div class="stats">
+              <div>Charisma</div><div class="statbar"><span data-target="0.78"></span></div>
+              <div>Focus</div><div class="statbar"><span data-target="0.65"></span></div>
+              <div>Riff Power</div><div class="statbar"><span data-target="0.92"></span></div>
+            </div>
+          </div>
+          <p style="margin-top:10px;">Mood: <span id="mood" class="blink">Hypercolor</span> • Status: <b>Online</b></p>
+          <hr>
+          <h3>Top 8 (click to star)</h3>
+          <div class="top8" id="top8"></div>
+        </div>
+      </aside>
+
+      <main id="main" class="card">
+        <div class="inner">
+          <h1>Prochains Shows — Montréal</h1>
+          <div class="nowplaying">
+            <button class="btn" id="playBtn">▶︎</button>
+            <div class="np-title" id="npTitle">Nothing playing</div>
+            <div class="progress"><span id="npProgress"></span></div>
+            <div class="counter">VISITS: <span id="visitCounter">000001</span></div>
+          </div>
+          <hr>
+          <!-- Placeholder: you can paste your original table/content below -->
+          <div id="contentSlot">
+            <p class="small">Paste your shows table here, or keep using your original file for data.</p>
+          </div>
+          <hr>
+          <h2>Polaroid Playground</h2>
+          <div class="gallery" id="gallery"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <footer>© 2003–2025 SteveSpace • Settings saved locally • Try the Konami code ;)</footer>
+
+  <script src="./steve_myspace_modern.js"></script>
+</body>
+</html>
