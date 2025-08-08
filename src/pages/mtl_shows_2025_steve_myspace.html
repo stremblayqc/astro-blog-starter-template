@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>✨ SteveSpace — Prochains concerts, version MySpace (2000s) ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comic+Neue:wght@300;700&display=swap" rel="stylesheet">
+<style>
+  /* === GLOBAL CHAOS (2000s vibe) === */
+  html, body { height:100%; }
+  body {
+    margin:0;
+    font-family: "Comic Neue","Comic Sans MS", cursive, system-ui, sans-serif;
+    color:#fff;
+    background:
+      radial-gradient(circle at 10% 10%, rgba(255,0,150,.25), transparent 40%),
+      radial-gradient(circle at 90% 20%, rgba(0,200,255,.2), transparent 40%),
+      radial-gradient(circle at 50% 80%, rgba(255,255,0,.15), transparent 40%),
+      linear-gradient(135deg, #14003b 0%, #2b0066 40%, #0c4a6e 100%);
+    background-attachment: fixed;
+    cursor: url('https://cur.cursors-4u.net/symbols/sym-7/sym695.cur'), auto;
+  }
+  a { color:#00ffea; text-decoration:none; }
+  a:hover { text-shadow:0 0 10px #00ffe5,0 0 20px #00ffe5; }
+  .blink { animation: blink .9s step-end infinite; }
+  @keyframes blink { 50% { opacity:.25; } }
+  .glow { text-shadow: 0 0 6px #fff, 0 0 12px #0ff, 0 0 18px #0ff; }
+  .marquee {
+    white-space: nowrap; overflow: hidden; box-sizing: border-box;
+    animation: marquee 20s linear infinite; display:block;
+  }
+  @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+  .rainbow { background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet); -webkit-background-clip: text; color: transparent; filter: drop-shadow(0 0 8px rgba(255,255,255,.6)); }
+  .container { max-width:1100px; margin:0 auto; padding:16px; }
+  .profile-wrap {
+    display:grid; grid-template-columns: 260px 1fr; gap:16px; margin-top:12px;
+  }
+  .card {
+    background: rgba(0,0,0,.35);
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 14px;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 24px rgba(0,255,255,.15), inset 0 0 24px rgba(255,0,255,.05);
+  }
+  .card .inner { padding:16px; }
+  header.top {
+    position: sticky; top:0; z-index: 5;
+    background: linear-gradient(90deg, #ff00e6, #00fff2, #ffe600, #ff00e6);
+    background-size: 300% 100%;
+    animation: barshift 8s linear infinite;
+    border-bottom: 4px double rgba(255,255,255,.5);
+    box-shadow: 0 4px 18px rgba(0,0,0,.4);
+  }
+  @keyframes barshift { 0% { background-position: 0 0; } 100% { background-position: 300% 0; } }
+  header .title {
+    padding: 10px 14px; font-family: "Press Start 2P", monospace; font-size: 16px; letter-spacing: 1px; color:#1a0033;
+    text-shadow: 0 0 2px #fff;
+  }
+  .statusbar {
+    padding: 8px 14px; font-size: 13px; background: rgba(0,0,0,.35); color:#fff;
+  }
+  .left .pfp { width:100%; border-radius: 12px; border:4px ridge #ff00e6; }
+  .badge { display:inline-block; padding:4px 8px; background:#ff00e6; color:#1a0033; font-weight:700; border-radius: 999px; margin-right:6px; }
+  .now-playing { font-weight: 700; }
+  .counter { font-family: "Press Start 2P", monospace; font-size: 12px; background:#000; padding: 6px 8px; border:2px inset #39ff14; display:inline-block; }
+  .top8 { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; }
+  .top8 .friend { text-align:center; }
+  .top8 img { width:100%; aspect-ratio:1/1; object-fit:cover; border:3px groove #00fff2; border-radius:8px; transition: transform .2s; }
+  .top8 img:hover { transform: rotate(-2deg) scale(1.05); }
+  /* Make the original table neon */
+  #main table { border-collapse: separate; border-spacing:0; width:100%; font-size: 14px; }
+  #main th, #main td { padding:.6rem .7rem; border:1px solid rgba(255,255,255,.25); }
+  #main th { background: linear-gradient(90deg, rgba(255,0,230,.35), rgba(0,255,242,.35)); color:#fff; text-shadow:0 1px 2px #000; position: sticky; top:0; z-index:1; }
+  #main tr:nth-child(even) td { background: rgba(255,255,255,.06); }
+  #main tr:hover td { background: rgba(255,255,255,.15); }
+  #main h1, #main h2, #main h3 { font-family: Impact, "Arial Black", sans-serif; letter-spacing: .5px; }
+  #main h1 { color:#ffe600; text-shadow: 2px 2px 0 #ff00e6, 4px 4px 0 #00fff2; }
+  #main h2 { color:#00fff2; text-shadow: 1px 1px 0 #ff00e6; }
+  #main p { color:#f7f7f7; }
+  .audio-wrap audio { width:100%; outline: 3px dashed #ffe600; }
+  /* sparkles */
+  .sparkle {
+    position: fixed; pointer-events:none; z-index: 9999; font-size: 14px; opacity: 1;
+    animation: floatout 1000ms ease-out forwards;
+    filter: drop-shadow(0 0 6px #fff);
+  }
+  @keyframes floatout {
+    to { transform: translateY(-40px) rotate(20deg); opacity: 0; }
+  }
+  /* footer */
+  footer { text-align:center; padding:30px 10px; color:#ddd; font-size: 12px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="title">STEVE'S TOTALLY RAD CONCERT PAGE • <span class="rainbow">ADD ME ✦ MESSAGE ✦ COMMENT</span></div>
+  <div class="statusbar">
+    <span class="badge">Mood:</span> 🤘 Ecstatique & caffeinated
+    <span class="badge">Status:</span> <span class="blink">Online</span>
+    <span class="badge">Last login:</span> <span id="lastLogin">just now</span>
+    <span style="float:right" class="counter">VISITS: <span id="visitCounter">000001</span></span>
+  </div>
+</header>
+
+<div class="container">
+  <span class="marquee glow">🎶 « NOW PLAYING » — Swans • Deftones • Boris • The Damned • Lorna Shore • Sharon Van Etten • Cattle Decapitation • Teenage Bottlerocket • Architects • Fit For A King • Madball • Psychostick • Descendents • Buzzcocks 🎶</span>
+
+  <div class="profile-wrap">
+    <aside class="left card">
+      <div class="inner">
+        <img class="pfp" src="https://placekitten.com/400/400" alt="Steve's epic profile pic">
+        <p><span class="badge">Age</span> 42 <span class="badge">City</span> Montréal</p>
+        <p><span class="badge">Currently listening</span> A wall of fuzz and feelings</p>
+        <div class="audio-wrap">
+          <audio controls>
+            <source src="" type="audio/mpeg">
+            Ton navigateur ne supporte pas l'audio (mets ton propre MP3 ici).
+          </audio>
+        </div>
+        <hr>
+        <h3 class="glow">Top 8 (remember this?)</h3>
+        <div class="top8">
+          <div class="friend"><a href="#"><img src="https://placekitten.com/200/200" alt="Friend 1"></a><div>Friend 1</div></div><div class="friend"><a href="#"><img src="https://placekitten.com/201/201" alt="Friend 2"></a><div>Friend 2</div></div><div class="friend"><a href="#"><img src="https://placekitten.com/202/202" alt="Friend 3"></a><div>Friend 3</div></div><div class="friend"><a href="#"><img src="https://placekitten.com/203/203" alt="Friend 4"></a><div>Friend 4</div></div><div class="friend"><a href="#"><img src="https://placekitten.com/204/204" alt="Friend 5"></a><div>Friend 5</div></div><div class="friend"><a href="#"><img src="https://placekitten.com/205/205" alt="Friend 6"></a><div>Friend 6</div></div><div class="friend"><a href="#"><img src="https://placekitten.com/206/206" alt="Friend 7"></a><div>Friend 7</div></div><div class="friend"><a href="#"><img src="https://placekitten.com/207/207" alt="Friend 8"></a><div>Friend 8</div></div>
+        </div>
+      </div>
+    </aside>
+
+    <main id="main" class="card">
+      <div class="inner">
+      <!-- === ORIGINAL CONTENT BELOW (styled) === -->
+      <!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prochains concerts — Montréal & Laval (automne 2025)</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5;margin:2rem;max-width:980px}
+h1,h2,h3{line-height:1.2}
+table{border-collapse:collapse;width:100%;}
+th,td{border:1px solid #ddd;padding:.5rem;vertical-align:top}
+th{background:#fafafa;text-align:left}
+code,pre{background:#f6f8fa;padding:.25rem .4rem;border-radius:4px}
+a{color:#0b5fff;text-decoration:none}a:hover{text-decoration:underline}
+.small{color:#555;font-size:.95rem}
+</style>
+<h1>Prochains concerts (filtrés pour tes goûts) — Montréal &amp; Laval, automne 2025</h1>
+<div class="small">Mise à jour: 2025-08-08</div>
+<h2>Article</h2>
+<p>Montréal, fin d’été — l’air sent la pluie, le métro, et l’électricité.</p>
+<p>Pas de « contenu », pas de poudre aux yeux. Juste des guitares qui cognent, des voix qui fendent l’air, et des salles où le plancher garde mémoire de milliers de pas. Cet automne, la région de Montréal devient un corridor de tension et de beauté — du grondement cathédral de <strong>Swans</strong> à la dentelle métallique de <strong>Deftones</strong>, des drones minéraux de <strong>Boris</strong> aux uppercuts hardcore de <strong>Madball</strong> et <strong>Comeback Kid</strong>.</p>
+<p>On garde ça <strong>Québec‑forward</strong> quand c’est possible, on évite le plastique, on célèbre la patine : punk de première vague (<strong>The Damned</strong>), deathcore millimétré (<strong>Lorna Shore</strong>), métal moderniste (<strong>Architects</strong>), songwriter sans sucre (<strong>Sharon Van Etten</strong> au National). C’est la saison des amplis qui tiennent tête à la climatisation et des refrains qui collent aux briques.</p>
+<p><em>Bref : si tu veux des frissons construits à la main, c’est ici.</em></p>
+<h2>Calendrier (ordre chronologique)</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>date</th>
+      <th>band(s)</th>
+      <th>venue</th>
+      <th>style</th>
+      <th>ai review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Aug 15, 2025</td>
+      <td>Architects + ERRA + Holywatr</td>
+      <td>Place Bell (Laval)</td>
+      <td>Modern metalcore</td>
+      <td>Precision + catharsis; riffs built for cathode rays.</td>
+    </tr>
+    <tr>
+      <td>Aug 27, 2025</td>
+      <td>Thousand Below + Aviana + True North + Dreamwake</td>
+      <td>Théâtre Fairmount</td>
+      <td>Post‑hardcore/metalcore</td>
+      <td>Angsty shimmer with hooks—sad kids, loud hearts.</td>
+    </tr>
+    <tr>
+      <td>Aug 30, 2025</td>
+      <td>Descendents + Buzzcocks + MattstaGraham</td>
+      <td>MTELUS</td>
+      <td>Classic punk</td>
+      <td>Eternal caffeine; melody at 200 bpm.</td>
+    </tr>
+    <tr>
+      <td>Sep 07, 2025</td>
+      <td>Comeback Kid + Incendiary + Prowl + Punitive Damage</td>
+      <td>Club Soda</td>
+      <td>Hardcore</td>
+      <td>Circle‑pit therapy. No algorithms, just sweat.</td>
+    </tr>
+    <tr>
+      <td>Sep 08, 2025</td>
+      <td>Deftones + IDLES + The Barbarians of California</td>
+      <td>Bell Centre</td>
+      <td>Alt‑metal / art‑punk</td>
+      <td>Dreamy crush; shoegaze teeth.</td>
+    </tr>
+    <tr>
+      <td>Sep 11, 2025</td>
+      <td>Falling In Reverse + Slaughter To Prevail + Hollywood Undead + Point North</td>
+      <td>Bell Centre</td>
+      <td>Metalcore/alt‑metal</td>
+      <td>More bombast than subtlety—bring earplugs.</td>
+    </tr>
+    <tr>
+      <td>Sep 18, 2025</td>
+      <td>Halestorm &amp; Lindsey Stirling + Apocalyptica</td>
+      <td>Place Bell (Laval)</td>
+      <td>Hard rock / symphonic</td>
+      <td>Violins meet valve amps; surprisingly grand.</td>
+    </tr>
+    <tr>
+      <td>Sep 24, 2025</td>
+      <td>The Damned + The Bellrays</td>
+      <td>Théâtre Beanfield</td>
+      <td>First‑wave punk / garage soul</td>
+      <td>Snarling history lesson; still vital.</td>
+    </tr>
+    <tr>
+      <td>Sep 26, 2025</td>
+      <td>Teenage Bottlerocket + We Were Sharks + Speed Massacre</td>
+      <td>Foufounes Électriques</td>
+      <td>Punk rock</td>
+      <td>Candy‑coated velocity; grins guaranteed.</td>
+    </tr>
+    <tr>
+      <td>Oct 02, 2025</td>
+      <td>Signs of the Swarm + Mental Cruelty + Ten56 + Carcosa</td>
+      <td>Théâtre Fairmount</td>
+      <td>Deathcore</td>
+      <td>Jet‑black breakdowns; uncompromising heft.</td>
+    </tr>
+    <tr>
+      <td>Oct 04, 2025</td>
+      <td>Swans + Little Annie &amp; Paul Wallfisch</td>
+      <td>Le National</td>
+      <td>Experimental/noise rock</td>
+      <td>Cathedral‑scale drones; time dilates.</td>
+    </tr>
+    <tr>
+      <td>Oct 08, 2025</td>
+      <td>Madball + Strife + Integrity + Combust</td>
+      <td>Théâtre Fairmount</td>
+      <td>Hardcore legends</td>
+      <td>Old‑school grit; pit etiquette required.</td>
+    </tr>
+    <tr>
+      <td>Oct 09, 2025</td>
+      <td>Psychostick + Danimal Cannon</td>
+      <td>Théâtre Fairmount</td>
+      <td>Comedy metal / chiptune</td>
+      <td>Goofy, loud, cathartic—dessert, not dinner.</td>
+    </tr>
+    <tr>
+      <td>Oct 28, 2025</td>
+      <td>Lorna Shore + The Black Dahlia Murder + Shadow of Intent + PeelingFlesh</td>
+      <td>Place Bell (Laval)</td>
+      <td>Symphonic deathcore</td>
+      <td>Orchestral hellfire; immaculate extremity.</td>
+    </tr>
+    <tr>
+      <td>Nov 06, 2025</td>
+      <td>Boris</td>
+      <td>Le National</td>
+      <td>Drone/doom/experimental</td>
+      <td>Monolithic tone sculpture; bring patience.</td>
+    </tr>
+    <tr>
+      <td>Nov 19, 2025</td>
+      <td>Fit For A King + Make Them Suffer + 156/Silence</td>
+      <td>L’Olympia</td>
+      <td>Metalcore</td>
+      <td>Clean/harsh tension done right.</td>
+    </tr>
+    <tr>
+      <td>Nov 26, 2025</td>
+      <td>Like Moths to Flames + Kingdom of Giants + Acres + Heavensgate</td>
+      <td>Théâtre Fairmount</td>
+      <td>Metalcore</td>
+      <td>Hooks with bite; efficient devastation.</td>
+    </tr>
+    <tr>
+      <td>Dec 05, 2025</td>
+      <td>Cattle Decapitation + Aborted + Frozen Soul + Tribal Gaze + Grindmother</td>
+      <td>Club Soda</td>
+      <td>Deathgrind/death metal</td>
+      <td>Apocalyptic precision; blast‑beat ballet.</td>
+    </tr>
+    <tr>
+      <td>Dec 06, 2025</td>
+      <td>Despised Icon</td>
+      <td>Club Soda</td>
+      <td>Deathcore (Montréal OGs)</td>
+      <td>Home‑field brutality; hometown roar.</td>
+    </tr>
+  </tbody>
+</table>
+</html>
+
+      <!-- === END ORIGINAL CONTENT === -->
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer>
+  <div>© 2025 SteveSpace — Powered by glitter, questionable gradients, and pure nostalgia.</div>
+</footer>
+
+<script>
+  // === Cursor sparkles ===
+  const glyphs = ["✦","✶","★","✺","✹","❇","✸","✧"];
+  let lastX=0, lastY=0;
+  window.addEventListener('mousemove', (e) => {
+    if (Math.hypot(e.clientX-lastX, e.clientY-lastY) < 8) return;
+    lastX=e.clientX; lastY=e.clientY;
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.textContent = glyphs[Math.floor(Math.random()*glyphs.length)];
+    s.style.left = (e.clientX + (Math.random()*12-6)) + 'px';
+    s.style.top  = (e.clientY + (Math.random()*12-6)) + 'px';
+    s.style.transform = 'translateY(0) rotate(' + (Math.random()*60-30) + 'deg)';
+    s.style.fontSize = (12 + Math.random()*14) + 'px';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1100);
+  });
+
+  // === Fake visit counter (localStorage) ===
+  const key = 'stevespace_visits';
+  const n = (parseInt(localStorage.getItem(key)||'0',10) + 1);
+  localStorage.setItem(key, n);
+  document.getElementById('visitCounter').textContent = String(n).padStart(6,'0');
+
+  // === Last login (localStorage) ===
+  const last = localStorage.getItem('stevespace_last') || 'never';
+  document.getElementById('lastLogin').textContent = last;
+  localStorage.setItem('stevespace_last', new Date().toLocaleString());
+
+  // === Vaporwave page title blink ===
+  setInterval(() => {
+    document.title = document.title.includes('✨') ? 'SteveSpace — Prochains concerts, version MySpace (2000s)' : '✨ SteveSpace — Prochains concerts, version MySpace (2000s) ✨';
+  }, 1200);
+</script>
+</body>
+</html>
