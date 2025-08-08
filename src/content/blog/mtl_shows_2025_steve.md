@@ -1,12 +1,12 @@
 ---
-title: "Montreal Shows 2025 — Steve’s Filter"
-description: "Curated rock/metal-forward calendar for Montreal in 2025."
+title: "Montreal Rock/Métal Shows Été-Automne 2025"
+description: "Rock/metal-forward calendar for Montreal in 2025."
 pubDate: 2025-08-08        # ISO 8601; no quotes needed
 tags: [montreal, shows, 2025]
 draft: false
 ---
 
-# Prochains concerts (filtrés pour tes goûts) — Montréal & Laval, automne 2025
+# Prochains concerts — Montréal & Laval, automne 2025
 
 
 ## Montréal, fin d’été — l’air sent la pluie, le métro, et l’électricité.
