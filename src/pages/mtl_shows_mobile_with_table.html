@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Steve’s Radical Concert Page</title>
+    <style>
+        /* Base reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 1px, transparent 2px) 0 0/80px 80px,
+                radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.05) 1px, transparent 2px) 0 0/80px 80px,
+                linear-gradient(120deg, #020d1f, #051b33 60%, #0a2347);
+            color: #f3f4f5;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        a {
+            color: #3ea6ff;
+            text-decoration: underline;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        summary:focus-visible {
+            outline: 2px dashed #80b8ff;
+            outline-offset: 2px;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem 3rem;
+            position: relative;
+        }
+
+        #logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Shimmer effect for header */
+        #logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+            animation: shimmer 4s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Subtle marquee effect with icons */
+        .marquee {
+            display: flex;
+            overflow: hidden;
+            height: 1.5rem;
+            margin-top: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-right: 2rem;
+            animation: scroll 10s linear infinite;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            right: 1rem;
+            top: 4rem;
+            width: 260px;
+            background: rgba(4, 22, 44, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            backdrop-filter: blur(4px);
+            color: #f3f4f5;
+            max-height: calc(100% - 5rem);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar details {
+            width: 100%;
+        }
+
+        .sidebar summary {
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: block;
+            padding: 0.5rem 0.75rem;
+            background: #02172e;
+            color: #b1c6da;
+            border-radius: 4px;
+        }
+
+        .sidebar summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .sidebar details[open] summary {
+            margin-bottom: 0.5rem;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .sidebar p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                margin: 0.5rem 0;
+                backdrop-filter: none;
+                background: rgba(4, 22, 44, 0.85);
+            }
+        }
+
+        /* Table container */
+        .table-container {
+            margin: 2rem auto;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 720px;
+            background: #ffffff;
+            color: #0b253f;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        thead tr {
+            position: sticky;
+            top: 0;
+            background: #02172e;
+            color: #ffffff;
+            z-index: 1;
+        }
+
+        th,
+        td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f3f7fa;
+        }
+
+        tbody tr:nth-child(odd) {
+            background: #eaf1f8;
+        }
+
+        tbody tr:hover {
+            background: #d4e3f1;
+        }
+
+        /* Utility classes */
+        .pill {
+            display: inline-block;
+            padding: 0.15rem 0.6rem;
+            border-radius: 9999px;
+            background-color: #0b69a3;
+            color: #ffffff;
+            font-size: 0.8rem;
+        }
+
+        .muted {
+            color: #7d8fa6;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: #18324a;
+            color: #b1c6da;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .caps {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.85rem;
+            color: #9eb1c4;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 id="logo">Steve’s Radical Concert Page</h1>
+        <div class="marquee" aria-hidden="true">
+            <span>🎸 🎤 🎶 ⭐ 🌟 🎵 🤘 🎧 🎷 🎹 🎺 🥁&nbsp;🎸 🎤 🎶 ⭐ 🌟 🎵 🤘 🎧 🎷 🎹 🎺 🥁</span>
+        </div>
+    </header>
+    <aside class="sidebar" aria-label="About and how to update">
+        <details>
+            <summary>About / How to update</summary>
+            <p>This page is your personal tracker for concerts and performances. To add a show, insert a new
+                <code>&lt;tr&gt;</code> element inside the <code>&lt;tbody id="rows-here"&gt;</code>. Each row must
+                include a <code>data-date</code> attribute in ISO&nbsp;8601 format (America/Toronto time zone) so it can
+                be sorted automatically.
+            </p>
+            <p>Use the columns: Date, Artists, Venue, Style, Analysis, Link. Keep each cell simple—just text
+                or a single link—so you can edit rows by hand.</p>
+        </details>
+    </aside>
+    <main>
+        <div class="table-container">
+            <table id="shows">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Artists</th>
+                        <th>Venue</th>
+                        <th>Style</th>
+                        <th>Analysis</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody id="rows-here">
+                    <tr>
+                        <td>Aug 15, 2025</td>
+                        <td>Architects + ERRA + Holywatr</td>
+                        <td>Place Bell</td>
+                        <td>Modern heavy</td>
+                        <td>Thunderous metalcore catharsis, defiant and anthemic.</td>
+                        <td><a href="https://evenko.ca/en/events/place-bell/architects?code=e005150">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Aug 27, 2025</td>
+                        <td>Thousand Below + Aviana + True North + Dreamwake</td>
+                        <td>Théâtre Fairmount</td>
+                        <td>Modern heavy</td>
+                        <td>Angst-laced melodies, heartfelt and heavy.</td>
+                        <td><a
+                                href="https://www.theatrefairmount.com/vnements/thousand-below-fairmount-theater/20250827">link</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Aug 30, 2025</td>
+                        <td>Descendents + Buzzcocks + MattstaGraham</td>
+                        <td>MTELUS</td>
+                        <td>Other-rock</td>
+                        <td>Eternal caffeine rush; melodies at 200 bpm.</td>
+                        <td><a href="https://evenko.ca/en/events/mtelus/descendents?code=e005238">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sep 3, 2025</td>
+                        <td>Satan + Mercifix + Metalian</td>
+                        <td>Foufounes Électriques</td>
+                        <td>NWOBHM</td>
+                        <td>Vintage British steel, fast and fearsome.</td>
+                        <td><a href="https://www.universe.com/events/satan-tickets-0FR6C5">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sep 7, 2025</td>
+                        <td>Comeback Kid + Incendiary + Prowl + Punitive Damage</td>
+                        <td>Club Soda</td>
+                        <td>Other-rock</td>
+                        <td>Breakneck hardcore unity—fists in the air.</td>
+                        <td><a href="https://lepointdevente.com/billets/clb250907001">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sep 11, 2025</td>
+                        <td>Be’lakor + Solemn Vision + Frostbite</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Modern heavy</td>
+                        <td>Epic melodeath vistas, heavy yet haunting.</td>
+                        <td><a href="https://evenko.ca/en/events/theatre-beanfield/belakor?code=e005746">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sep 12, 2025</td>
+                        <td>Death Before Dishonor + Street Power + Northwalk + Drive By + Cold Minded</td>
+                        <td>Foufounes Électriques</td>
+                        <td>Other-rock</td>
+                        <td>Bruising Boston hardcore—no frills, all fury.</td>
+                        <td><a href="https://www.universe.com/events/death-before-dishonor-tickets-8TCFLH">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sep 14, 2025</td>
+                        <td>Landmvrks + Novelists + Silly Goose + Resolve</td>
+                        <td>MTELUS</td>
+                        <td>Modern heavy</td>
+                        <td>Relentless riffs meet soaring hooks—modern metalcore drama.</td>
+                        <td><a href="https://evenko.ca/en/events/mtelus/landmvrks?code=e006154">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sep 15, 2025</td>
+                        <td>James</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Indie/Art rock</td>
+                        <td>Sweeping Britpop anthems, wistful and alive.</td>
+                        <td><a href="https://evenko.ca/en/events/theatre-beanfield/james?code=e005599">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sep 18, 2025</td>
+                        <td>Bruce Dickinson</td>
+                        <td>MTELUS</td>
+                        <td>NWOBHM</td>
+                        <td>Maiden legend unfurls operatic metal tales.</td>
+                        <td><a href="https://evenko.ca/en/events/mtelus/bruce-dickinson?code=e005745">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sep 21, 2025</td>
+                        <td>Bridge City Sinners + Dead On A Sunday + Joshua Quimby</td>
+                        <td>Foufounes Électriques</td>
+                        <td>Americana/Outlaw</td>
+                        <td>Macabre folk mischief—banjos, ballads and brimstone.</td>
+                        <td><a href="https://www.universe.com/events/bridge-city-sinners-tickets">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sep 24, 2025</td>
+                        <td>The Damned + The Bellrays</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Other-rock</td>
+                        <td>Punk pioneers meet garage-soul fireworks.</td>
+                        <td><a href="https://evenko.ca/en/events/theatre-beanfield/the-damned?code=e005882">link</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sep 28, 2025</td>
+                        <td>Blessthefall + Miss May I + Dark Divine + Colorblind</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Modern heavy</td>
+                        <td>Metalcore veterans ignite melodic mayhem.</td>
+                        <td><a href="https://evenko.ca/en/events/theatre-beanfield/blessthefall?code=e006118">link</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sep 30, 2025</td>
+                        <td>Sonata Arctica + Powerglove + Blackguard</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Modern heavy</td>
+                        <td>High-velocity power metal triumph and symphonic fury.</td>
+                        <td><a href="https://evenko.ca/en/events/theatre-beanfield/sonata-arctica?code=e005971">link</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sep 30, 2025</td>
+                        <td>Sex Pistols (Jones/Cook/Matlock feat. Frank Carter) + The Molotovs</td>
+                        <td>MTELUS</td>
+                        <td>Other-rock</td>
+                        <td>Punk’s not dead—original Pistols roar back in chaos.</td>
+                        <td><a href="https://evenko.ca/en/events/mtelus/sex-pistols?code=e005936">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Oct 4, 2025</td>
+                        <td>Swans + Little Annie &amp; Paul Wallfisch</td>
+                        <td>Le National</td>
+                        <td>Ambient/Experimental</td>
+                        <td>Transcendent noise and quiet fury; an immersive ritual.</td>
+                        <td><a href="https://evenko.ca/en/events/le-national/swans?code=e005659">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Oct 4, 2025</td>
+                        <td>Dead Congregation + Phobocosm + Sedimentum</td>
+                        <td>Foufounes Électriques</td>
+                        <td>Modern heavy</td>
+                        <td>Merciless death metal abyss—only for the brave.</td>
+                        <td><a href="https://www.universe.com/events/dead-congregation-tickets">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Oct 8, 2025</td>
+                        <td>Bryan Adams + The Sheepdogs</td>
+                        <td>Bell Centre</td>
+                        <td>Classic rock</td>
+                        <td>Timeless rock anthems—every song a sing-along.</td>
+                        <td><a href="https://evenko.ca/en/events/bell-centre/bryan-adams?code=e005714">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Oct 8, 2025</td>
+                        <td>Madball + Strife + Integrity + Combust + Iron Crusaders</td>
+                        <td>Théâtre Fairmount</td>
+                        <td>Other-rock</td>
+                        <td>OG hardcore crews deliver raw, unrelenting energy.</td>
+                        <td><a href="https://www.universe.com/events/madball-strife-integrity-tickets">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Oct 17, 2025</td>
+                        <td>Mumford &amp; Sons + Michael Kiwanuka</td>
+                        <td>Bell Centre</td>
+                        <td>Americana/Outlaw</td>
+                        <td>Rousing folk epics to stir every soul in the arena.</td>
+                        <td><a href="https://evenko.ca/en/events/bell-centre/mumford-sons?code=e005833">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Oct 17, 2025</td>
+                        <td>Kaïn</td>
+                        <td>Club Soda</td>
+                        <td>Québec iconic</td>
+                        <td>Beloved franco rockers celebrate 25 years of anthems.</td>
+                        <td><a href="https://evenko.ca/fr/evenements/club-soda/kain?code=e005819">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Oct 24, 2025</td>
+                        <td>Kataklysm &amp; Vader + Malevolent Creation + Skeletal Remains</td>
+                        <td>Théâtre Fairmount</td>
+                        <td>Modern heavy</td>
+                        <td>Death metal legends unite for a skull-crushing onslaught.</td>
+                        <td><a
+                                href="https://evenko.ca/en/events/theatre-fairmount/kataklysm-vader?code=e006141">link</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Oct 25, 2025</td>
+                        <td>Biohazard + Onyx + Bayway + Swollen Teeth</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Modern heavy</td>
+                        <td>Brooklyn hardcore fury with rap attitude.</td>
+                        <td><a href="https://evenko.ca/en/events/theatre-beanfield/biohazard?code=e006087">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Oct 25, 2025</td>
+                        <td>MxPx + The Ataris</td>
+                        <td>MTELUS</td>
+                        <td>Other-rock</td>
+                        <td>Pop-punk nostalgia: speedy chords and youthful harmonies.</td>
+                        <td><a href="https://evenko.ca/en/events/mtelus/mxpx?code=e005979">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Oct 28, 2025</td>
+                        <td>Lorna Shore + The Black Dahlia Murder + Shadow Of Intent + PeelingFlesh</td>
+                        <td>Place Bell</td>
+                        <td>Modern heavy</td>
+                        <td>Symphonic screams and breakdowns—extreme metal goes grand.</td>
+                        <td><a href="https://evenko.ca/en/events/place-bell/lorna-shore?code=e006134">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Oct 31, 2025</td>
+                        <td>Dopethrone</td>
+                        <td>Foufounes Électriques</td>
+                        <td>Doom/Gothic</td>
+                        <td>Slow, filthy sludge—doom riffs thick as smoke.</td>
+                        <td><a href="https://www.universe.com/events/dopethrone-halloween-party-tickets">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 1, 2025</td>
+                        <td>Tom Morello</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Other-rock</td>
+                        <td>Guitar rebel revisits riffs and revolution.</td>
+                        <td><a href="https://evenko.ca/en/events/theatre-beanfield/tom-morello?code=e006214">link</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nov 12, 2025</td>
+                        <td>Death to All + Gorguts + Phobophilic</td>
+                        <td>MTELUS</td>
+                        <td>Modern heavy</td>
+                        <td>Death metal pioneers honored with technical ferocity.</td>
+                        <td><a href="https://evenko.ca/en/events/mtelus/death-to-all?code=e006094">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 14, 2025</td>
+                        <td>Wednesday</td>
+                        <td>Club Soda</td>
+                        <td>Indie/Art rock</td>
+                        <td>Distorted country twang meets shoegaze bliss.</td>
+                        <td><a href="https://evenko.ca/en/events/club-soda/wednesday?code=e005960">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 17, 2025</td>
+                        <td>Paul McCartney</td>
+                        <td>Bell Centre</td>
+                        <td>Classic rock</td>
+                        <td>Generational anthems from rock’s ultimate legend.</td>
+                        <td><a href="https://evenko.ca/en/events/bell-centre/paul-mccartney?code=e006155">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 18, 2025</td>
+                        <td>Omnium Gatherum + Aether Realm + Hinayana</td>
+                        <td>Foufounes Électriques</td>
+                        <td>Modern heavy</td>
+                        <td>Melodic death metal grandeur with Nordic melancholy.</td>
+                        <td><a href="https://www.universe.com/events/omnium-gatherum-tickets">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 19, 2025</td>
+                        <td>Fit for a King + Make Them Suffer + Spite + 156/Silence</td>
+                        <td>L’Olympia</td>
+                        <td>Modern heavy</td>
+                        <td>Metalcore meltdown—crushing riffs and emotive refrains.</td>
+                        <td><a href="https://evenko.ca/en/events/l-olympia/fit-for-a-king?code=e006113">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 20, 2025</td>
+                        <td>The Dears</td>
+                        <td>Le National</td>
+                        <td>Indie/Art rock</td>
+                        <td>Orchestral indie romantics—sweeping and cathartic.</td>
+                        <td><a href="https://evenko.ca/en/events/le-national/the-dears?code=e005891">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 23, 2025</td>
+                        <td>Entheos + Fallujah + The Zenith Passage + Tracheotomy</td>
+                        <td>Foufounes Électriques</td>
+                        <td>Modern heavy</td>
+                        <td>Progressive death metal intricacy—brutal yet mind-bending.</td>
+                        <td><a href="https://www.universe.com/events/entheos-tickets">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 23, 2025</td>
+                        <td>Splean</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Indie/Art rock</td>
+                        <td>Brooding Russian alt-rock with poetic soul.</td>
+                        <td><a href="https://evenko.ca/en/events/theatre-beanfield/splean?code=e006143">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 25, 2025</td>
+                        <td>Bar Italia</td>
+                        <td>Club Soda</td>
+                        <td>Indie/Art rock</td>
+                        <td>Murmuring post-punk cool drenched in London fog.</td>
+                        <td><a href="https://evenko.ca/en/events/club-soda/bar-italia?code=e006088">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 25, 2025</td>
+                        <td>Atreyu + Unearth + Zero 9:36</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Modern heavy</td>
+                        <td>Metalcore mainstays unleash mosh-ready melodies.</td>
+                        <td><a href="https://evenko.ca/en/events/theatre-beanfield/atreyu?code=e006079">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Nov 26, 2025</td>
+                        <td>Like Moths to Flames + Kingdom of Giants + Acres + Heavensgate</td>
+                        <td>Théâtre Fairmount</td>
+                        <td>Modern heavy</td>
+                        <td>Surging metalcore angst with soaring choruses.</td>
+                        <td><a
+                                href="https://evenko.ca/en/events/theatre-fairmount/like-moths-to-flames?code=e006164">link</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Dec 3, 2025</td>
+                        <td>The Tea Party + Headstones + Finger Eleven</td>
+                        <td>MTELUS</td>
+                        <td>Prog/Alt</td>
+                        <td>90s Canadian rock royalty—moody, muscular and mystical.</td>
+                        <td><a href="https://evenko.ca/en/events/mtelus/the-tea-party?code=e005897">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Dec 4, 2025</td>
+                        <td>Damiano David</td>
+                        <td>MTELUS</td>
+                        <td>Other-rock</td>
+                        <td>Glam rock swagger meets modern pop drama.</td>
+                        <td><a href="https://evenko.ca/en/events/mtelus/damiano-david?code=e004089">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Dec 5, 2025</td>
+                        <td>PUP + Snotty Nose Rez Kids</td>
+                        <td>MTELUS</td>
+                        <td>Other-rock</td>
+                        <td>Raucous punk anthems and fearless Northern spirit.</td>
+                        <td><a href="https://evenko.ca/en/events/mtelus/pup?code=e006009">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Dec 5, 2025</td>
+                        <td>Cattle Decapitation + Aborted + Frozen Soul + Tribal Gaze + Grindmother</td>
+                        <td>Club Soda</td>
+                        <td>Modern heavy</td>
+                        <td>Relentless deathgrind assault—extreme and uncompromising.</td>
+                        <td><a href="https://evenko.ca/en/events/club-soda/cattle-decapitation?code=e006081">link</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Dec 6, 2025</td>
+                        <td>Despised Icon + Blind Witness + Scorching Tomb + Bruiserweight</td>
+                        <td>Club Soda</td>
+                        <td>Modern heavy</td>
+                        <td>Homegrown deathcore chaos—blast beats and breakdowns.</td>
+                        <td><a href="https://evenko.ca/en/events/club-soda/despised-icon?code=e006159">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Dec 7, 2025</td>
+                        <td>Despised Icon + Beneath The Massacre + Apes + Primal Horde</td>
+                        <td>Club Soda</td>
+                        <td>Modern heavy</td>
+                        <td>Second helping of pit annihilation—Montreal’s heavy elite.</td>
+                        <td><a href="https://evenko.ca/fr/evenements/club-soda/despised-icon?code=e006260">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Dec 10, 2025</td>
+                        <td>All Them Witches + King Buffalo</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Other-rock</td>
+                        <td>Psychedelic desert blues—hypnotic grooves under low lights.</td>
+                        <td><a
+                                href="https://evenko.ca/en/events/theatre-beanfield/all-them-witches?code=e006122">link</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Dec 11, 2025</td>
+                        <td>Moist</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Grunge</td>
+                        <td>Dramatic 90s alt rock, brooding verses and big choruses.</td>
+                        <td><a href="https://evenko.ca/en/events/theatre-beanfield/moist?code=e005945">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Dec 13, 2025</td>
+                        <td>Grandson</td>
+                        <td>MTELUS</td>
+                        <td>Prog/Alt</td>
+                        <td>Revolutionary rage meets electronic rock fire.</td>
+                        <td><a href="https://evenko.ca/en/events/mtelus/grandson?code=e006223">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Jan 19, 2026</td>
+                        <td>Cate Le Bon</td>
+                        <td>Le National</td>
+                        <td>Indie/Art rock</td>
+                        <td>Avant-pop sophistication with a whimsical edge.</td>
+                        <td><a href="https://evenko.ca/en/events/le-national/cate-le-bon?code=e006180">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Jan 21, 2026</td>
+                        <td>shame</td>
+                        <td>Club Soda</td>
+                        <td>Indie/Art rock</td>
+                        <td>Post-punk energy and sardonic swagger from South London.</td>
+                        <td><a href="https://evenko.ca/en/events/club-soda/shame?code=e006132">link</a></td>
+                    </tr>
+                    <tr>
+                        <td>Jan 25, 2026</td>
+                        <td>Lord of the Lost &amp; The Birthday Massacre + Wednesday 13</td>
+                        <td>Théâtre Beanfield</td>
+                        <td>Doom/Gothic</td>
+                        <td>Gothic grandeur and dark synth-rock theater.</td>
+                        <td><a
+                                href="https://evenko.ca/en/events/theatre-beanfield/lord-of-the-lost-the-birthday-massacre?code=e005858">link</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+        Last updated: {{PLACEHOLDER_DATE}}
+    </footer>
+    <script>
+        function sortRowsByDate(selector) {
+            const tbody = document.querySelector(selector);
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            rows.sort((a, b) => {
+                const dateA = new Date(a.getAttribute('data-date'));
+                const dateB = new Date(b.getAttribute('data-date'));
+                return dateA - dateB;
+            });
+            rows.forEach(row => tbody.appendChild(row));
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            sortRowsByDate('#shows tbody');
+        });
+    </script>
+</body>
+
+</html>
