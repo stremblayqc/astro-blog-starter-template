@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>✨ SteveSpace — Prochains concerts, version MySpace (2000s) ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comic+Neue:wght@300;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* === GLOBAL CHAOS (2000s vibe) === */
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Comic Neue", "Comic Sans MS", cursive, system-ui, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 0, 150, .25), transparent 40%),
+        radial-gradient(circle at 90% 20%, rgba(0, 200, 255, .2), transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(255, 255, 0, .15), transparent 40%),
+        linear-gradient(135deg, #14003b 0%, #2b0066 40%, #0c4a6e 100%);
+      background-attachment: fixed;
+      cursor: url('https://cur.cursors-4u.net/symbols/sym-7/sym695.cur'), auto;
+    }
+
+    a {
+      color: #00ffea;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-shadow: 0 0 10px #00ffe5, 0 0 20px #00ffe5;
+    }
+
+    .blink {
+      animation: blink .9s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: .25;
+      }
+    }
+
+    .glow {
+      text-shadow: 0 0 6px #fff, 0 0 12px #0ff, 0 0 18px #0ff;
+    }
+
+    .marquee {
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+      animation: marquee 20s linear infinite;
+      display: block;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .rainbow {
+      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+      -webkit-background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, .6));
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .profile-wrap {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, .35);
+      border: 2px solid rgba(255, 255, 255, .2);
+      border-radius: 14px;
+      backdrop-filter: blur(3px);
+      box-shadow: 0 0 24px rgba(0, 255, 255, .15), inset 0 0 24px rgba(255, 0, 255, .05);
+    }
+
+    .card .inner {
+      padding: 16px;
+    }
+
+    header.top {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: linear-gradient(90deg, #ff00e6, #00fff2, #ffe600, #ff00e6);
+      background-size: 300% 100%;
+      animation: barshift 8s linear infinite;
+      border-bottom: 4px double rgba(255, 255, 255, .5);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .4);
+    }
+
+    @keyframes barshift {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 300% 0;
+      }
+    }
+
+    header .title {
+      padding: 10px 14px;
+      font-family: "Press Start 2P", monospace;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: #1a0033;
+      text-shadow: 0 0 2px #fff;
+    }
+
+    .statusbar {
+      padding: 8px 14px;
+      font-size: 13px;
+      background: rgba(0, 0, 0, .35);
+      color: #fff;
+    }
+
+    .left .pfp {
+      width: 100%;
+      border-radius: 12px;
+      border: 4px ridge #ff00e6;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #ff00e6;
+      color: #1a0033;
+      font-weight: 700;
+      border-radius: 999px;
+      margin-right: 6px;
+    }
+
+    .now-playing {
+      font-weight: 700;
+    }
+
+    .counter {
+      font-family: "Press Start 2P", monospace;
+      font-size: 12px;
+      background: #000;
+      padding: 6px 8px;
+      border: 2px inset #39ff14;
+      display: inline-block;
+    }
+
+    .top8 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .top8 .friend {
+      text-align: center;
+    }
+
+    .top8 img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border: 3px groove #00fff2;
+      border-radius: 8px;
+      transition: transform .2s;
+    }
+
+    .top8 img:hover {
+      transform: rotate(-2deg) scale(1.05);
+    }
+
+    /* Make the original table neon */
+    #main table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    #main th,
+    #main td {
+      padding: .6rem .7rem;
+      border: 1px solid rgba(255, 255, 255, .25);
+    }
+
+    #main th {
+      background: linear-gradient(90deg, rgba(255, 0, 230, .35), rgba(0, 255, 242, .35));
+      color: #fff;
+      text-shadow: 0 1px 2px #000;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    #main tr:nth-child(even) td {
+      background: rgba(255, 255, 255, .06);
+    }
+
+    #main tr:hover td {
+      background: rgba(255, 255, 255, .15);
+    }
+
+    #main h1,
+    #main h2,
+    #main h3 {
+      font-family: Impact, "Arial Black", sans-serif;
+      letter-spacing: .5px;
+    }
+
+    #main h1 {
+      color: #ffe600;
+      text-shadow: 2px 2px 0 #ff00e6, 4px 4px 0 #00fff2;
+    }
+
+    #main h2 {
+      color: #00fff2;
+      text-shadow: 1px 1px 0 #ff00e6;
+    }
+
+    #main p {
+      color: #f7f7f7;
+    }
+
+    .audio-wrap audio {
+      width: 100%;
+      outline: 3px dashed #ffe600;
+    }
+
+    /* sparkles */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 14px;
+      opacity: 1;
+      animation: floatout 1000ms ease-out forwards;
+      filter: drop-shadow(0 0 6px #fff);
+    }
+
+    @keyframes floatout {
+      to {
+        transform: translateY(-40px) rotate(20deg);
+        opacity: 0;
+      }
+    }
+
+    /* footer */
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      color: #ddd;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="title">STEVE'S TOTALLY RAD CONCERT PAGE • <span class="rainbow">ADD ME ✦ MESSAGE ✦ COMMENT</span></div>
+    <div class="statusbar">
+      <span class="badge">Mood:</span> 🤘 Ecstatique & caffeinated
+      <span class="badge">Status:</span> <span class="blink">Online</span>
+      <span class="badge">Last login:</span> <span id="lastLogin">just now</span>
+      <span style="float:right" class="counter">VISITS: <span id="visitCounter">000001</span></span>
+    </div>
+  </header>
+
+  <div class="container">
+    <span class="marquee glow">🎶 « NOW PLAYING » — Swans • Deftones • Boris • The Damned • Lorna Shore • Sharon Van
+      Etten • Cattle Decapitation • Teenage Bottlerocket • Architects • Fit For A King • Madball • Psychostick •
+      Descendents • Buzzcocks 🎶</span>
+
+    <div class="profile-wrap">
+      <aside class="left card">
+        <div class="inner">
+          <img class="pfp" src="https://placekitten.com/400/400" alt="Steve's epic profile pic">
+          <p><span class="badge">Age</span> 42 <span class="badge">City</span> Montréal</p>
+          <p><span class="badge">Currently listening</span> A wall of fuzz and feelings</p>
+          <div class="audio-wrap">
+            <audio controls>
+              <source src="" type="audio/mpeg">
+              Ton navigateur ne supporte pas l'audio (mets ton propre MP3 ici).
+            </audio>
+          </div>
+          <hr>
+          <h3 class="glow">Top 8 (remember this?)</h3>
+          <div class="top8">
+            <div class="friend"><a href="#"><img src="https://placekitten.com/200/200" alt="Friend 1"></a>
+              <div>Friend 1</div>
+            </div>
+            <div class="friend"><a href="#"><img src="https://placekitten.com/201/201" alt="Friend 2"></a>
+              <div>Friend 2</div>
+            </div>
+            <div class="friend"><a href="#"><img src="https://placekitten.com/202/202" alt="Friend 3"></a>
+              <div>Friend 3</div>
+            </div>
+            <div class="friend"><a href="#"><img src="https://placekitten.com/203/203" alt="Friend 4"></a>
+              <div>Friend 4</div>
+            </div>
+            <div class="friend"><a href="#"><img src="https://placekitten.com/204/204" alt="Friend 5"></a>
+              <div>Friend 5</div>
+            </div>
+            <div class="friend"><a href="#"><img src="https://placekitten.com/205/205" alt="Friend 6"></a>
+              <div>Friend 6</div>
+            </div>
+            <div class="friend"><a href="#"><img src="https://placekitten.com/206/206" alt="Friend 7"></a>
+              <div>Friend 7</div>
+            </div>
+            <div class="friend"><a href="#"><img src="https://placekitten.com/207/207" alt="Friend 8"></a>
+              <div>Friend 8</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main id="main" class="card">
+        <div class="inner">
+          <!-- === ORIGINAL CONTENT BELOW (styled) === -->
+          <!doctype html>
+          <html lang="fr">
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Prochains concerts — Montréal & Laval (automne 2025)</title>
+          <style>
+            body {
+              font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+              line-height: 1.5;
+              margin: 2rem;
+              max-width: 980px
+            }
+
+            h1,
+            h2,
+            h3 {
+              line-height: 1.2
+            }
+
+            table {
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            th,
+            td {
+              border: 1px solid #ddd;
+              padding: .5rem;
+              vertical-align: top
+            }
+
+            th {
+              background: #fafafa;
+              text-align: left
+            }
+
+            code,
+            pre {
+              background: #f6f8fa;
+              padding: .25rem .4rem;
+              border-radius: 4px
+            }
+
+            a {
+              color: #0b5fff;
+              text-decoration: none
+            }
+
+            a:hover {
+              text-decoration: underline
+            }
+
+            .small {
+              color: #555;
+              font-size: .95rem
+            }
+          </style>
+          <h1>Prochains concerts — Montréal &amp; Laval, automne 2025</h1>
+          <div class="small">Mise à jour: 2025-08-08</div>
+          <h2>Calendrier (ordre chronologique)</h2>
+          <table border="1" class="dataframe">
+            <thead>
+              <tr style="text-align: right;">
+                <th>date</th>
+                <th>band(s)</th>
+                <th>venue</th>
+                <th>style</th>
+                <th>ai review</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Aug 15, 2025</td>
+                <td>Architects + ERRA + Holywatr</td>
+                <td>Place Bell</td>
+                <td>Metalcore</td>
+                <td>Modern metalcore mastery; crushing riffs meet soaring melodies.</td>
+                <td>Architects – "Holy Hell"</td>
+              </tr>
+              <tr>
+                <td>Aug 27, 2025</td>
+                <td>Thousand Below + Aviana + True North + Dreamwake</td>
+                <td>Théâtre Fairmount</td>
+                <td>Post‑hardcore/metalcore</td>
+                <td>Angsty shimmer with hooks—sad kids, loud hearts.</td>
+                <td>Thousand Below – "Gone In Your Wake"</td>
+              </tr>
+              <tr>
+                <td>Aug 30, 2025</td>
+                <td>Descendents + Buzzcocks + MattstaGraham</td>
+                <td>MTELUS</td>
+                <td>Classic punk</td>
+                <td>Eternal caffeine; melody at 200 bpm.</td>
+                <td>Descendents – "Milo Goes to College"</td>
+              </tr>
+              <tr>
+                <td>Sep 03, 2025</td>
+                <td>Blanco White</td>
+                <td>Beanfield Theatre</td>
+                <td>Indie folk/alternative</td>
+                <td>Dreamy and introspective, blending flamenco hues with modern folk.</td>
+                <td>Blanco White – "On the Other Side"</td>
+              </tr>
+              <tr>
+                <td>Sep 03, 2025</td>
+                <td>Satan + Metalian</td>
+                <td>Foufounes Électriques</td>
+                <td>Traditional heavy metal</td>
+                <td>NWOBHM spirit alive with galloping riffs and twin leads.</td>
+                <td>Satan – "Court in the Act"</td>
+              </tr>
+              <tr>
+                <td>Sep 03, 2025</td>
+                <td>Caifanes</td>
+                <td>L’Olympia</td>
+                <td>Latin rock</td>
+                <td>Mexican post‑punk legends fuse rock with folkloric mystique.</td>
+                <td>Caifanes – "El Silencio"</td>
+              </tr>
+              <tr>
+                <td>Sep 07, 2025</td>
+                <td>Comeback Kid – Wake the Dead 20th Anniversary</td>
+                <td>Club Soda</td>
+                <td>Hardcore punk</td>
+                <td>Sing‑along brutality; fists in the air for melodic hardcore classics.</td>
+                <td>Comeback Kid – "Wake the Dead"</td>
+              </tr>
+              <tr>
+                <td>Sep 08, 2025</td>
+                <td>Deftones + IDLES + The Barbarians of California</td>
+                <td>Bell Centre</td>
+                <td>Alternative metal/post‑punk</td>
+                <td>Heavy yet hypnotic; Chino’s croon meets IDLES’ cathartic roar.</td>
+                <td>Deftones – "White Pony"</td>
+              </tr>
+              <tr>
+                <td>Sep 10, 2025</td>
+                <td>Morrissey</td>
+                <td>Place Bell</td>
+                <td>Indie rock/crooner</td>
+                <td>The Moz returns with melancholic wit and jangly classics.</td>
+                <td>The Smiths – "The Queen Is Dead"</td>
+              </tr>
+              <tr>
+                <td>Sep 11, 2025</td>
+                <td>Falling in Reverse + Slaughter to Prevail + Hollywood Undead + Point North</td>
+                <td>Bell Centre</td>
+                <td>Post‑hardcore/metalcore</td>
+                <td>A theatrical mix of breakdowns and rap‑metal swagger.</td>
+                <td>Falling in Reverse – "Popular Monster" (EP)</td>
+              </tr>
+              <tr>
+                <td>Sep 12, 2025</td>
+                <td>The Pogues</td>
+                <td>MTELUS</td>
+                <td>Celtic punk/folk rock</td>
+                <td>Rowdy Irish reels meet punk attitude—raise a pint.</td>
+                <td>The Pogues – "Rum Sodomy & the Lash"</td>
+              </tr>
+              <tr>
+                <td>Sep 12, 2025</td>
+                <td>Death Before Dishonor</td>
+                <td>Foufounes Électriques</td>
+                <td>Hardcore</td>
+                <td>Boston beatdown; gritty street anthems for the pit.</td>
+                <td>Death Before Dishonor – "Better Ways to Die"</td>
+              </tr>
+              <tr>
+                <td>Sep 13, 2025</td>
+                <td>Wet Leg + Mary In The Junkyard</td>
+                <td>MTELUS</td>
+                <td>Indie rock/post‑punk</td>
+                <td>Deadpan hooks and wiry guitars; art‑school cheekiness abounds.</td>
+                <td>Wet Leg – "Wet Leg"</td>
+              </tr>
+              <tr>
+                <td>Sep 13, 2025</td>
+                <td>Foxwarren + Allegra Krieger</td>
+                <td>Théâtre Fairmount</td>
+                <td>Indie folk/alt country</td>
+                <td>Prairie ambience meets gentle harmonies; intimate warmth.</td>
+                <td>Foxwarren – "Foxwarren"</td>
+              </tr>
+              <tr>
+                <td>Sep 13, 2025</td>
+                <td>The Devil Makes Three</td>
+                <td>Club Soda</td>
+                <td>Americana/folk punk</td>
+                <td>Banjo‑driven tales of sin and salvation—cowpunk revival.</td>
+                <td>The Devil Makes Three – "The Devil Makes Three"</td>
+              </tr>
+              <tr>
+                <td>Sep 14, 2025</td>
+                <td>The Darkness – Dreams on Toast</td>
+                <td>Club Soda</td>
+                <td>Glam/hard rock</td>
+                <td>Falsetto fun and fretboard fireworks—retro rock spectacular.</td>
+                <td>The Darkness – "Permission to Land"</td>
+              </tr>
+              <tr>
+                <td>Sep 14, 2025</td>
+                <td>LANDMVRKS + Thornhill + Paledusk + Ghost Iris</td>
+                <td>MTELUS</td>
+                <td>Metalcore</td>
+                <td>European heavies deliver djent‑tinged breakdowns and melodic choruses.</td>
+                <td>LANDMVRKS – "Lost in the Waves"</td>
+              </tr>
+              <tr>
+                <td>Sep 16, 2025</td>
+                <td>Our Last Night + Grayscale + Wind Walkers</td>
+                <td>MTELUS</td>
+                <td>Post‑hardcore</td>
+                <td>Cinematic covers and emotive anthems; melodic screamo done right.</td>
+                <td>Our Last Night – "Younger Dreams"</td>
+              </tr>
+              <tr>
+                <td>Sep 17, 2025</td>
+                <td>Propagandhi</td>
+                <td>Club Soda</td>
+                <td>Politicized punk/thrash</td>
+                <td>Razor‑sharp riffs meet radical leftist lyrics.</td>
+                <td>Propagandhi – "How to Clean Everything"</td>
+              </tr>
+              <tr>
+                <td>Sep 18, 2025</td>
+                <td>Bruce Dickinson</td>
+                <td>MTELUS</td>
+                <td>Heavy metal</td>
+                <td>Iron Maiden frontman’s operatic metal odyssey; soaring tales and gallops.</td>
+                <td>Bruce Dickinson – "The Chemical Wedding"</td>
+              </tr>
+              <tr>
+                <td>Sep 18, 2025</td>
+                <td>Halestorm & Lindsey Stirling + Apocalyptica</td>
+                <td>Place Bell</td>
+                <td>Hard rock/classical crossover</td>
+                <td>Violin‑slinging virtuosity meets hard rock riffs; symphonic fire.</td>
+                <td>Halestorm – "The Strange Case Of…"</td>
+              </tr>
+              <tr>
+                <td>Sep 19, 2025</td>
+                <td>SYML + Beyries</td>
+                <td>MTELUS</td>
+                <td>Indie folk</td>
+                <td>Haunting falsetto and piano‑driven introspection; quietude that swells.</td>
+                <td>SYML – "Sacred Spaces"</td>
+              </tr>
+              <tr>
+                <td>Sep 20, 2025</td>
+                <td>Korn + Gojira + Loathe</td>
+                <td>Bell Centre</td>
+                <td>Nu metal/progressive metal</td>
+                <td>Chugging grooves and guttural roars; a bridge between eras of heavy.</td>
+                <td>Korn – "Follow the Leader"</td>
+              </tr>
+              <tr>
+                <td>Sep 20, 2025</td>
+                <td>Lynyrd Skynyrd + The Outlaws</td>
+                <td>Place Bell</td>
+                <td>Southern rock</td>
+                <td>Guitar boogie and whiskey‑soaked storytelling; vintage rebel rock.</td>
+                <td>Lynyrd Skynyrd – "(Pronounced ’Lĕh-’nérd ’Skin-’nérd)"</td>
+              </tr>
+              <tr>
+                <td>Sep 22, 2025</td>
+                <td>Viagra Boys + BODEGA</td>
+                <td>MTELUS</td>
+                <td>Post‑punk/noise rock</td>
+                <td>Sax‑spattered chaos meets art‑rock deadpan; danceable dissonance.</td>
+                <td>Viagra Boys – "Welfare Jazz"</td>
+              </tr>
+              <tr>
+                <td>Sep 22, 2025</td>
+                <td>Wolf Alice</td>
+                <td>Beanfield Theatre</td>
+                <td>Indie rock/dream pop</td>
+                <td>Lush vocals and fuzzy guitars; grunge and shoegaze collide.</td>
+                <td>Wolf Alice – "Blue Weekend"</td>
+              </tr>
+              <tr>
+                <td>Sep 22, 2025</td>
+                <td>Sharon Van Etten</td>
+                <td>Le National</td>
+                <td>Singer‑songwriter/indie rock</td>
+                <td>Raw confessionals and swelling arrangements; heart‑on‑sleeve intensity.</td>
+                <td>Sharon Van Etten – "Remind Me Tomorrow"</td>
+              </tr>
+              <tr>
+                <td>Sep 23, 2025</td>
+                <td>Sextile + Automatic</td>
+                <td>Théâtre Fairmount</td>
+                <td>Post‑punk/synth</td>
+                <td>Motorik rhythms and icy synths conjure neon‑lit dystopias.</td>
+                <td>Sextile – "Albeit Living"</td>
+              </tr>
+              <tr>
+                <td>Sep 24, 2025</td>
+                <td>múm</td>
+                <td>Théâtre Fairmount</td>
+                <td>Ambient/experimental electronica</td>
+                <td>Delicate glitch and whispered vocals—like ice crystals melting.</td>
+                <td>múm – "Finally We Are No One"</td>
+              </tr>
+              <tr>
+                <td>Sep 25, 2025</td>
+                <td>Steven Wilson</td>
+                <td>MTELUS</td>
+                <td>Progressive rock</td>
+                <td>King of modern prog weaves ambitious narratives with cinematic soundscapes.</td>
+                <td>Steven Wilson – "Hand. Cannot. Erase."</td>
+              </tr>
+              <tr>
+                <td>Sep 29, 2025</td>
+                <td>Tom Odell + Jade Bird</td>
+                <td>MTELUS</td>
+                <td>Singer‑songwriter/folk pop</td>
+                <td>Piano balladry and raspy country‑tinged vocals; earnest storytelling.</td>
+                <td>Tom Odell – "Long Way Down"</td>
+              </tr>
+              <tr>
+                <td>Sep 29, 2025</td>
+                <td>Del the Funky Homosapien, Dan the Automator & Kid Koala with Lealani</td>
+                <td>Beanfield Theatre</td>
+                <td>Alternative hip hop</td>
+                <td>Hieroglyphic rhymes and turntablist wizardry; nerd‑rap royalty reassembled.</td>
+                <td>Deltron 3030 – "Deltron 3030"</td>
+              </tr>
+              <tr>
+                <td>Sep 30, 2025</td>
+                <td>Sex Pistols + The Molotovs</td>
+                <td>MTELUS</td>
+                <td>Punk rock</td>
+                <td>Godfathers of punk return with sneer and snarl; anarchy’s encore.</td>
+                <td>Sex Pistols – "Never Mind the Bollocks"</td>
+              </tr>
+              <tr>
+                <td>Oct 02, 2025</td>
+                <td>Signs of the Swarm + Mental Cruelty + Ten56. + Carcosa + Face Yourself</td>
+                <td>Théâtre Fairmount</td>
+                <td>Deathcore</td>
+                <td>Blastbeats and guttural growls; a brutal wall of sound for the brave.</td>
+                <td>Signs of the Swarm – "Vital Deprivation"</td>
+              </tr>
+              <tr>
+                <td>Oct 03, 2025</td>
+                <td>Skinshape + Sons of Sevilla</td>
+                <td>Théâtre Fairmount</td>
+                <td>Psychedelic funk/soul</td>
+                <td>Warm vintage grooves and cinematic vibes; laid‑back sonic sunshine.</td>
+                <td>Skinshape – "Filoxiny"</td>
+              </tr>
+              <tr>
+                <td>Oct 03, 2025</td>
+                <td>MANÁ</td>
+                <td>Bell Centre</td>
+                <td>Latin rock/pop rock</td>
+                <td>Arena‑sized melodies and passionate ballads from Mexican rock titans.</td>
+                <td>Maná – "¿Dónde Jugarán los Niños?"</td>
+              </tr>
+              <tr>
+                <td>Oct 04, 2025</td>
+                <td>Swans</td>
+                <td>Le National</td>
+                <td>Experimental rock/post‑rock</td>
+                <td>Monolithic drones and hypnotic intensity; not for the faint‑hearted.</td>
+                <td>Swans – "To Be Kind"</td>
+              </tr>
+              <tr>
+                <td>Oct 08, 2025</td>
+                <td>Madball + Strife + Integrity</td>
+                <td>Théâtre Fairmount</td>
+                <td>Hardcore punk</td>
+                <td>New York and Cleveland hardcore heavyweights unite for stage‑diving fury.</td>
+                <td>Madball – "Set It Off"</td>
+              </tr>
+              <tr>
+                <td>Oct 08, 2025</td>
+                <td>Bryan Adams + The Sheepdogs</td>
+                <td>Bell Centre</td>
+                <td>Classic rock</td>
+                <td>A night of Can‑rock anthems; sing‑alongs from Summer of ’69 to modern retro.</td>
+                <td>Bryan Adams – "Reckless"</td>
+              </tr>
+              <tr>
+                <td>Oct 09, 2025</td>
+                <td>Psychostick + Danimal Cannon + Wrestlemaniaks + Voonic2</td>
+                <td>Théâtre Fairmount</td>
+                <td>Comedy metal/hard rock</td>
+                <td>Absurd humour meets headbanging; beer, video games and riffs.</td>
+                <td>Psychostick – "Sandwich"</td>
+              </tr>
+              <tr>
+                <td>Oct 09, 2025</td>
+                <td>Destroyer (Dan Bejar) – Dan’s Boogie Tour</td>
+                <td>Cabaret Foufounes Électriques</td>
+                <td>Art rock/indie rock</td>
+                <td>Sophisticated crooning and poetic lyricism; lush pop meets lounge.</td>
+                <td>Destroyer – "Kaputt"</td>
+              </tr>
+              <tr>
+                <td>Oct 15, 2025</td>
+                <td>GoGo Penguin</td>
+                <td>MTELUS</td>
+                <td>Experimental jazz</td>
+                <td>Piano trio melds electronic textures with propulsive grooves.</td>
+                <td>GoGo Penguin – "v2.0"</td>
+              </tr>
+              <tr>
+                <td>Oct 15, 2025</td>
+                <td>Model/Actriz</td>
+                <td>Théâtre Fairmount</td>
+                <td>Noise rock/dance punk</td>
+                <td>Industrial rhythms and spoken‑word ferocity; visceral yet danceable.</td>
+                <td>Model/Actriz – "Dogsbody"</td>
+              </tr>
+              <tr>
+                <td>Oct 17, 2025</td>
+                <td>Kaïn</td>
+                <td>Club Soda</td>
+                <td>Québec folk rock</td>
+                <td>Festive Québécois singalongs with accordion and grit.</td>
+                <td>Kaïn – "Pop Culture"</td>
+              </tr>
+              <tr>
+                <td>Oct 20, 2025</td>
+                <td>Ezra Furman + The Golden Dregs</td>
+                <td>Théâtre Fairmount</td>
+                <td>Indie rock/glam folk</td>
+                <td>Cathartic rock operettas; punk energy meets doo‑wop sweetness.</td>
+                <td>Ezra Furman – "Perpetual Motion People"</td>
+              </tr>
+              <tr>
+                <td>Oct 21, 2025</td>
+                <td>Black Pistol Fire</td>
+                <td>Théâtre Fairmount</td>
+                <td>Garage rock/blues rock</td>
+                <td>Two‑piece dynamite; gritty riffs and soulful vocals channel Jack White.</td>
+                <td>Black Pistol Fire – "Deadbeat Graffiti"</td>
+              </tr>
+              <tr>
+                <td>Oct 23, 2025</td>
+                <td>Ariane Moffatt</td>
+                <td>MTELUS</td>
+                <td>Québécois singer‑songwriter/pop</td>
+                <td>Electro‑folk melodies and poetic francophone lyricism.</td>
+                <td>Ariane Moffatt – "Aquanaute"</td>
+              </tr>
+              <tr>
+                <td>Oct 24, 2025</td>
+                <td>Rouge Pompier</td>
+                <td>Club Soda</td>
+                <td>Québec punk rock</td>
+                <td>High‑energy duo delivering tongue‑in‑cheek punk anthems.</td>
+                <td>Rouge Pompier – "Cheveux propres, lunettes cassées"</td>
+              </tr>
+              <tr>
+                <td>Oct 25, 2025</td>
+                <td>MXPX + The Ataris</td>
+                <td>MTELUS</td>
+                <td>Pop punk</td>
+                <td>Skate‑punk nostalgia with infectious choruses; youth crew forever.</td>
+                <td>MXPX – "Life in General"</td>
+              </tr>
+              <tr>
+                <td>Oct 29, 2025</td>
+                <td>IAMX + clubdrugs</td>
+                <td>Théâtre Fairmount</td>
+                <td>Dark synthpop/industrial</td>
+                <td>Glamorous synth noir and androgynous theatrics; dancefloor confessions.</td>
+                <td>IAMX – "Metanoia"</td>
+              </tr>
+              <tr>
+                <td>Oct 31, 2025</td>
+                <td>Dopethrone</td>
+                <td>Foufounes Électriques</td>
+                <td>Sludge/doom metal</td>
+                <td>Bong‑ripping riffs and swampy menace; a Halloween haze.</td>
+                <td>Dopethrone – "Hochelaga"</td>
+              </tr>
+              <tr>
+                <td>Nov 06, 2025</td>
+                <td>Cœur de pirate</td>
+                <td>MTELUS</td>
+                <td>Indie pop/chanson</td>
+                <td>Piano‑driven francophone pop with cinematic flair.</td>
+                <td>Cœur de pirate – "Impossible à aimer"</td>
+              </tr>
+              <tr>
+                <td>Nov 07, 2025</td>
+                <td>Alex Nevsky</td>
+                <td>Club Soda</td>
+                <td>Québec pop/folk</td>
+                <td>Heartfelt chansons and lush arrangements; modern chanson star.</td>
+                <td>Alex Nevsky – "Himalaya mon amour"</td>
+              </tr>
+              <tr>
+                <td>Nov 08, 2025</td>
+                <td>Kerala Dust</td>
+                <td>Théâtre Fairmount</td>
+                <td>Indie electronica/blues</td>
+                <td>Smoky vocals and downtempo grooves blending house with desert blues.</td>
+                <td>Kerala Dust – "Light, West"</td>
+              </tr>
+              <tr>
+                <td>Nov 11, 2025</td>
+                <td>Matthew Good + I Mother Earth</td>
+                <td>MTELUS</td>
+                <td>Canadian alternative rock</td>
+                <td>Politically charged singer‑songwriter meets groovy alt‑rockers.</td>
+                <td>Matthew Good Band – "Beautiful Midnight"</td>
+              </tr>
+              <tr>
+                <td>Nov 12, 2025</td>
+                <td>Death DTA Tour + Gorguts + Phobophilic</td>
+                <td>MTELUS</td>
+                <td>Death metal</td>
+                <td>Tribute to Chuck Schuldiner’s progressive death metal legacy with Quebec heroes.</td>
+                <td>Death – "Symbolic"</td>
+              </tr>
+              <tr>
+                <td>Nov 13, 2025</td>
+                <td>Alex Burger & guests</td>
+                <td>Club Soda</td>
+                <td>Québec country/folk</td>
+                <td>Honky‑tonk charm and prairie twang in Québécois vernacular.</td>
+                <td>Alex Burger – "Sweet Montérégie"</td>
+              </tr>
+              <tr>
+                <td>Nov 13, 2025</td>
+                <td>French Police + Social Order</td>
+                <td>Théâtre Fairmount</td>
+                <td>Post‑punk/darkwave</td>
+                <td>Shadowy basslines and reverb‑drenched vocals; brooding dancefloor vibes.</td>
+                <td>French Police – "Haunted Castle"</td>
+              </tr>
+              <tr>
+                <td>Nov 14, 2025</td>
+                <td>Wednesday</td>
+                <td>Club Soda</td>
+                <td>Indie rock/alt country</td>
+                <td>Shoegaze twang and earnest storytelling from North Carolina’s fuzzed‑out ensemble.</td>
+                <td>Wednesday – "Rat Saw God"</td>
+              </tr>
+              <tr>
+                <td>Nov 25, 2025</td>
+                <td>Gowan</td>
+                <td>MTELUS</td>
+                <td>Classic rock/prog rock</td>
+                <td>Canadian keyboard wizard delivers theatrical rock show with Styx‑like flair.</td>
+                <td>Gowan – "Strange Animal"</td>
+              </tr>
+              <tr>
+                <td>Nov 26, 2025</td>
+                <td>Like Moths to Flames + Kingdom of Giants + Acres + Heavensgate</td>
+                <td>Théâtre Fairmount</td>
+                <td>Metalcore</td>
+                <td>Aggressive breakdowns and emotive choruses for a cathartic night.</td>
+                <td>Like Moths to Flames – "No Eternity in Gold"</td>
+              </tr>
+              <tr>
+                <td>Nov 28, 2025</td>
+                <td>Blind Guardian + Ensiferum + Seven Kingdoms</td>
+                <td>MTELUS</td>
+                <td>Power metal/folk metal</td>
+                <td>Epic tales and soaring choruses; swords, dragons and sing‑alongs.</td>
+                <td>Blind Guardian – "Imaginations from the Other Side"</td>
+              </tr>
+              <tr>
+                <td>Nov 29, 2025</td>
+                <td>The Barr Brothers + Land of Talk</td>
+                <td>MTELUS</td>
+                </,<tr>
+                <td>Indie folk/rock</td>
+                <td>Harp‑toting folk and ethereal indie rock craft a warm autumn evening.</td>
+                <td>The Barr Brothers – "Sleeping Operator"</td>
+              </tr>
+              <tr>
+                <td>Nov 29, 2025</td>
+                <td>Billie Marten + Núria Graham</td>
+                <td>Théâtre Fairmount</td>
+                <td>Singer‑songwriter/folk</td>
+                <td>Intimate acoustic set with hushed vocals and pastoral melodies.</td>
+                <td>Billie Marten – "Drop Cherries"</td>
+              </tr>
+              <tr>
+                <td>Nov 29, 2025</td>
+                <td>The Beths + Phoebe Rings</td>
+                <td>Beanfield Theatre</td>
+                <td>Indie rock/power pop</td>
+                <td>Jangly guitars and bittersweet harmonies from New Zealand’s finest.</td>
+                <td>The Beths – "Jump Rope Gazers"</td>
+              </tr>
+              <tr>
+                <td>Dec 03, 2025</td>
+                <td>The Tea Party + Headstones + Finger Eleven</td>
+                <td>MTELUS</td>
+                <td>Canadian rock/grunge</td>
+                <td>90s Can‑rock triple bill—Eastern mysticism meets hard‑hitting riffs.</td>
+                <td>The Tea Party – "The Edges of Twilight"</td>
+              </tr>
+              <tr>
+                <td>Dec 05, 2025</td>
+                <td>Cattle Decapitation</td>
+                <td>Club Soda</td>
+                <td>Deathgrind/death metal</td>
+                <td>Grim environmental apocalypse screamed over technical brutality.</td>
+                <td>Cattle Decapitation – "Death Atlas"</td>
+              </tr>
+              <tr>
+                <td>Dec 05, 2025</td>
+                <td>PUP + Snotty Nose Rez Kids</td>
+                <td>MTELUS</td>
+                <td>Punk rock/hip hop</td>
+                <td>Toronto punks and Indigenous hip hop duo bring catharsis and activism.</td>
+                <td>PUP – "Morbid Stuff"</td>
+              </tr>
+              <tr>
+                <td>Dec 06, 2025</td>
+                <td>Despised Icon</td>
+                <td>Club Soda</td>
+                <td>Deathcore</td>
+                <td>Montreal’s own pioneers of deathcore deliver breakdown obliteration.</td>
+                <td>Despised Icon – "The Healing Process"</td>
+              </tr>
+              <tr>
+                <td>Dec 07, 2025</td>
+                <td>Mac DeMarco + Tex Crick</td>
+                <td>MTELUS</td>
+                <td>Indie rock/lo‑fi pop</td>
+                <td>Slacker grooves and woozy crooning; bring your own cigarette and smile.</td>
+                <td>Mac DeMarco – "Salad Days"</td>
+              </tr>
+              <tr>
+                <td>Dec 12, 2025</td>
+                <td>Tommy Youngsteen performing Fleetwood Mac “Rumours”</td>
+                <td>Théâtre Fairmount</td>
+                <td>Classic rock tribute</td>
+                <td>Montreal supergroup lovingly recreates a 70s masterpiece.</td>
+                <td>Fleetwood Mac – "Rumours"</td>
+              </tr>
+              <tr>
+                <td>Dec 13, 2025</td>
+                <td>Grandson</td>
+                <td>MTELUS</td>
+                <td>Alternative rock/rap rock</td>
+                <td>Political anthems with pounding beats and grunge‑rap energy.</td>
+                <td>Grandson – "Death of an Optimist"</td>
+              </tr>
+              <tr>
+                <td>Jan 19, 2026</td>
+                <td>Cate Le Bon</td>
+                <td>Le National</td>
+                <td>Art rock/psych folk</td>
+                <td>Angular guitars and surreal Welsh poetry; eccentric and entrancing.</td>
+                <td>Cate Le Bon – "Reward"</td>
+              </tr>
+              <tr>
+                <td>Jan 21, 2026</td>
+                <td>Shame</td>
+                <td>Club Soda</td>
+                <td>Post‑punk</td>
+                <td>Spiky guitars and sardonic vocals; mosh‑worthy angst for the modern age.</td>
+                <td>Shame – "Drunk Tank Pink"</td>
+              </tr>
+              <tr>
+                <td>Feb 06, 2026</td>
+                <td>Northern Invasion 2026 Day 1</td>
+                <td>MTELUS</td>
+                <td>Heavy metal festival</td>
+                <td>A who’s‑who of Nordic metal descends for a two‑day riff marathon.</td>
+                <td>Compilation – Explore bands on the lineup</td>
+              </tr>
+              <tr>
+                <td>Feb 07, 2026</td>
+                <td>Northern Invasion 2026 Day 2</td>
+                <td>MTELUS</td>
+                <td>Heavy metal festival</td>
+                <td>Day two amplifies the onslaught; immerse yourself in Scandinavia’s finest.</td>
+                <td>Compilation – Explore bands on the lineup</td>
+              </tr>
+            </tbody>
+          </table>
+
+          </html>
+
+          <!-- === END ORIGINAL CONTENT === -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <footer>
+    <div>© 2025 SteveSpace — Powered by glitter, questionable gradients, and pure nostalgia.</div>
+  </footer>
+
+  <script>
+    // === Cursor sparkles ===
+    const glyphs = ["✦", "✶", "★", "✺", "✹", "❇", "✸", "✧"];
+    let lastX = 0, lastY = 0;
+    window.addEventListener('mousemove', (e) => {
+      if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < 8) return;
+      lastX = e.clientX; lastY = e.clientY;
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+      s.style.left = (e.clientX + (Math.random() * 12 - 6)) + 'px';
+      s.style.top = (e.clientY + (Math.random() * 12 - 6)) + 'px';
+      s.style.transform = 'translateY(0) rotate(' + (Math.random() * 60 - 30) + 'deg)';
+      s.style.fontSize = (12 + Math.random() * 14) + 'px';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1100);
+    });
+
+    // === Fake visit counter (localStorage) ===
+    const key = 'stevespace_visits';
+    const n = (parseInt(localStorage.getItem(key) || '0', 10) + 1);
+    localStorage.setItem(key, n);
+    document.getElementById('visitCounter').textContent = String(n).padStart(6, '0');
+
+    // === Last login (localStorage) ===
+    const last = localStorage.getItem('stevespace_last') || 'never';
+    document.getElementById('lastLogin').textContent = last;
+    localStorage.setItem('stevespace_last', new Date().toLocaleString());
+
+    // === Vaporwave page title blink ===
+    setInterval(() => {
+      document.title = document.title.includes('✨') ? 'SteveSpace — Prochains concerts, version MySpace (2000s)' : '✨ SteveSpace — Prochains concerts, version MySpace (2000s) ✨';
+    }, 1200);
+  </script>
+</body>
+
+</html>
